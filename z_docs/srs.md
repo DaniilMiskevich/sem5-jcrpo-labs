@@ -32,7 +32,7 @@ The application will interact with the following external systems and libraries:
 
 - Flutter, the core framework for cross-platform development.
 
-- Minisound library. This is the primary audio engine for playing pre-recorded metronome sounds and generating waves for the tuner. This dependency is critical for achieving low-latency audio playback.
+- Minisound, the primary audio engine for playing pre-recorded metronome sounds and generating waves for the tuner. This dependency is critical for achieving low-latency audio playback.
 
 - A cloud storage service (Firebase, AWS Amplify, or a custom backend). A service to facilitate the synchronization of user presets across multiple devices. This will handle user authentication, data storage and real-time updates.
 
@@ -77,4 +77,78 @@ The successful implementation of the stated requirements depends on the followin
 
 ## 3 System Requirements
 
+This section details the specific, actionable requirements for the TempTune application.
 
+## 3.1 Functional Requirements
+
+### 3.1.1 Metronome Functionality
+
+- The system shall allow the user to adjust the tempo using a visual slider or dial within a range of 30 to 250 BPM.
+
+- The system shall provide a "Tap Tempo" feature, allowing the user to set the BPM by tapping the button in rhythm.
+
+- The system shall allow the user to select a time signature (e.g. 2/4, 3/4, 4/4, 5/4, 6/8).
+
+- The system shall produce an accent on the first beat of each measure.
+
+- The system shall provide real-time visual feedback (e.g. a flashing indicator or animated pendulum) synchronized with the beat.
+
+- The system shall prevent the device it is running from locking the screen.
+
+
+### 3.1.2 Tuner Functionality
+
+- The system shall generate a pure, stable wave tone at a user-selected frequency (e.g. corresponding to musical notes from A0 to C8).
+
+- The system shall allow the user to adjust the volume of the generated tone independently of the system volume.
+
+- The system shall allow the user to select the waveform type (sine, square, triangle, sawtooth) for the generated tuning tone.
+
+- The system shall display the currently selected frequency and its corresponding note.
+
+
+### 3.1.3 Preset Management
+
+- The system shall allow the user to save the current metronome configuration (BPM, time signature, sound, accent pattern) as a named preset.
+
+- The system shall allow the user to select the current metronome configuration from the list of saved presets.
+
+- The system shall provide a screen for the user to view, edit and delete saved presets.
+
+<!-- share presets? -->
+
+
+### 3.1.4 Sound Customization
+
+- The system shall provide a set of built-in, high-quality sounds for the metronome clicks (e.g., wood block, beep, click).
+
+- The system shall allow the user to import custom sound files from device storage to use as metronome clicks.
+
+- The system shall provide a screen for the user to view, edit and delete loaded sounds.
+
+
+### 3.1.5 Synchronization
+
+- The system shall allow the user to create an account and authenticate with a service.
+
+- The system shall synchronize the user's saved presets and loaded sounds across all their devices upon authentication.
+
+
+## 3.2 Non-Functional Requirements
+
+- Reliability: the metronome must not drop beats, stutter, or crash during use, especially during long practice sessions. The application shall undergo stress testing with no audio glitches or application failures. It must reliably maintain audio focus and handle interruptions (e.g. incoming calls) gracefully.
+
+- Performance: audio latency must be minimized to ensure the timing of the metronome click is perceived as instantaneous. The audio output latency shall be consistently below 50ms on supported mid-range and high-end devices. The UI must render at a consistent 60fps to ensure smooth visual feedback.
+
+- Usability: the application must be intuitive for a musician to use immediately, often in a high-pressure practice or performance setting. A new user shall be able to start the metronome and adjust the BPM within 10 seconds of opening the app. The UI shall adhere to platform-specific (Material/Cupertino) design guidelines for familiarity.
+
+
+# 4 Appendix
+
+## References 
+
+- [Flutter Docs](https://flutter.dev/docs).
+
+- [Minisound API Reference](https://pub.dev/documentation/minisound/latest/).
+
+- [Material Design Guidelines](https://m3.material.io/).
