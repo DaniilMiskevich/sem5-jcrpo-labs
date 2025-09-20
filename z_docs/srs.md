@@ -19,7 +19,6 @@ The TempTune application will provide users with a core metronome functionality,
 Several established apps exist in this space, but they typically excel in one core area - either as a metronome *or* a tuner - but rarely offer a deeply integrated and equally powerful experience for both. TempTune will differentiate itself by providing an integrated toolkit, with a focus on customizable sounds and seamless preset management across devices, which is rerely found in current market offerings.
 
 
----
 
 
 ## 2 User Requirements
@@ -74,7 +73,6 @@ The successful implementation of the stated requirements depends on the followin
 - The app will be unable to load custom sounds without a granted OS permission for the storage access.
 
 
----
 
 
 ## 3 System Requirements
