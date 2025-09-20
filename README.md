@@ -16,7 +16,7 @@ A combined metronome and tone generator flutter app for musical practice, featur
 
 ## Links
 
-- [Software Requirements Specification](z_docs/srs.md)
+- [Software Requirements Specification (SRS)](z_docs/srs.md)
 
 - [UI Mockups](z_docs/ui_mockups/)
 
