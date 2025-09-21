@@ -1,6 +1,6 @@
 # Requirements Document
 
-## 1 Introduction
+## 1 INTRODUCTION
 
 This document provides an overview of the requirements for the TempTune mobile app. TempTune is a metronome and tuner application designed to help in musical practice. This document serves as a definitive guide for the development team and will be used for verification and QA upon its completion.
 
@@ -21,7 +21,7 @@ Several established apps exist in this space, but they typically excel in one co
 
 
 
-## 2 User Requirements
+## 2 USER REQUIREMENTS
 
 This section describes the external interfaces, user profiles, and overarching constraints of the TempTune application.
 
@@ -42,21 +42,24 @@ The application will interact with the following external systems and libraries:
 The user interface shall consist of three main screens, navigable via a bottom navigation bar or a main drawer menu:
 
 1. Metronome screen. This is the primary screen featuring a preset selector, a BPM dial/slider, time signature selector, tap tempo button and start/stop controls. Visual feedback will be prominently displayed on the each beat.
-![Metronome screen](ui_mockups/metronome_screen.png)
+![Metronome screen](ui_mockups/metronome_screen.svg)
 
 2. Tuner screen. This is the second screen dedicated to the tone generator. It will feature a frequency selector, a volume control and start/stop controls.
-![Tuner screen](ui_mockups/tuner_screen.png)
+![Tuner screen](ui_mockups/tuner_screen.svg)
 
 3. Settings screen. This screen hosts account and application settings (e.g. theme), and a button to navigate to the metronome presets and loaded sounds screen.
-![Settings screen](ui_mockups/settings_screen.png)
+![Settings screen](ui_mockups/settings_screen.svg)
 
 Additinal screens that are navigatable only from on other screens:
 
-4. Presets screen. This is a screen for managing metronome presets (create, view, edit, delete) and loaded sounds.
-![Presets screen](ui_mockups/presets_screen.png)
+4. Presets screen. This is a screen for managing metronome presets (view, edit, delete).
+![Presets screen](ui_mockups/presets_screen.svg)
+
+4. Custom sounds screen. This is a screen for managing loaded sounds (load in, view, edit, delete).
+![Custom sounds screen](ui_mockups/custom_sounds_screen.svg)
 
 
-The overall UI shall adhere to modern Material Design 3 (on Android) and Cupertino (on iOS) guidelines, ensuring a native feel on each platform. The design will prioritize clarity, large touch targets, and minimalism to avoid distracting the user during practice or performance.
+The overall UI shall adhere to modern Material Design 3 guidelines, ensuring a native feel on the mobile platform. The design will prioritize clarity, large touch targets, and minimalism to avoid distracting the user during practice or performance.
 
 
 ### 2.3 User Characteristics
@@ -75,77 +78,77 @@ The successful implementation of the stated requirements depends on the followin
 
 
 
-## 3 System Requirements
+## 3 SYSTEM REQUIREMENTS
 
 This section details the specific, actionable requirements for the TempTune application.
 
-## 3.1 Functional Requirements
+### 3.1 Functional Requirements
 
-### 3.1.1 Metronome Functionality
+#### 3.1.1 Metronome Functionality
 
 - The system shall allow the user to adjust the tempo using a visual slider or dial within a range of 30 to 250 BPM.
 
 - The system shall provide a "Tap Tempo" feature, allowing the user to set the BPM by tapping the button in rhythm.
 
-- The system shall allow the user to select a time signature (e.g. 2/4, 3/4, 4/4, 5/4, 6/8).
+- The system shall allow the user to select a beat the accent will be applied, as well as disabling accent completely.
 
-- The system shall produce an accent on the first beat of each measure.
-
-- The system shall provide real-time visual feedback (e.g. a flashing indicator or animated pendulum) synchronized with the beat.
+<!-- - The system shall provide real-time visual feedback (e.g. a flashing indicator or animated pendulum) synchronized with the beat. -->
 
 - The system shall prevent the device it is running from locking the screen.
 
 
-### 3.1.2 Tuner Functionality
-
-- The system shall generate a pure, stable wave tone at a user-selected frequency (e.g. corresponding to musical notes from A0 to C8).
-
-- The system shall allow the user to adjust the volume of the generated tone independently of the system volume.
-
-- The system shall allow the user to select the waveform type (sine, square, triangle, sawtooth) for the generated tuning tone.
+#### 3.1.2 Tuner Functionality
 
 - The system shall display the currently selected frequency and its corresponding note.
 
+- The system shall generate a pure, stable wave tone at a user-selected frequency, corresponding to musical notes from A0 to C8.
 
-### 3.1.3 Preset Management
+- The system shall allow the user to adjust the volume of a generated tone independently of the system volume.
 
-- The system shall allow the user to save the current metronome configuration (BPM, time signature, sound, accent pattern) as a named preset.
+- The system shall allow the user to select the waveform type (sine, square, triangle, sawtooth) for a generated tuning tone.
+
+
+#### 3.1.3 Preset Management
+
+- The system shall allow the user to save the current metronome configuration as a named preset.
 
 - The system shall allow the user to select the current metronome configuration from the list of saved presets.
 
-- The system shall provide a screen for the user to view, edit and delete saved presets.
+- The system shall provide a place for the user to view, edit and delete saved presets.
 
 <!-- share presets? -->
 
 
-### 3.1.4 Sound Customization
+#### 3.1.4 Sound Customization
 
-- The system shall provide a set of built-in, high-quality sounds for the metronome clicks (e.g., wood block, beep, click).
+- The system shall provide a set of built-in, high-quality sounds for the metronome clicks (e.g. wood block, beep, click).
 
 - The system shall allow the user to import custom sound files from device storage to use as metronome clicks.
 
 - The system shall provide a screen for the user to view, edit and delete loaded sounds.
 
 
-### 3.1.5 Synchronization
+#### 3.1.5 Synchronization
 
 - The system shall allow the user to create an account and authenticate with a service.
 
 - The system shall synchronize the user's saved presets and loaded sounds across all their devices upon authentication.
 
 
-## 3.2 Non-Functional Requirements
+### 3.2 Non-Functional Requirements
 
 - Reliability: the metronome must not drop beats, stutter, or crash during use, especially during long practice sessions. The application shall undergo stress testing with no audio glitches or application failures. It must reliably maintain audio focus and handle interruptions (e.g. incoming calls) gracefully.
 
 - Performance: audio latency must be minimized to ensure the timing of the metronome click is perceived as instantaneous. The audio output latency shall be consistently below 50ms on supported mid-range and high-end devices. The UI must render at a consistent 60fps to ensure smooth visual feedback.
 
-- Usability: the application must be intuitive for a musician to use immediately, often in a high-pressure practice or performance setting. A new user shall be able to start the metronome and adjust the BPM within 10 seconds of opening the app. The UI shall adhere to platform-specific (Material/Cupertino) design guidelines for familiarity.
+- Usability: the application must be intuitive for a musician to use immediately, often in a high-pressure practice or performance setting. A new user shall be able to start the metronome and adjust the BPM within 10 seconds of opening the app. 
 
 
-# 4 Appendix
 
-## References 
+
+## 4 APPENDIX
+
+### 4.1 References 
 
 - [Flutter Docs](https://flutter.dev/docs).
 
