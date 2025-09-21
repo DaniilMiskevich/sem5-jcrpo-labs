@@ -13,7 +13,10 @@
   <font id="EmbeddedFont_1" horiz-adv-x="2048">
    <font-face font-family="Liberation Sans embedded" units-per-em="2048" font-weight="bold" font-style="normal" ascent="1852" descent="423"/>
    <missing-glyph horiz-adv-x="2048" d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z "/>
-   <glyph unicode="⭠" horiz-adv-x="1175" d="M 363,344 L 8,696 363,1049 363,790 1188,790 1188,602 363,602 363,344 Z "/>
+   <glyph unicode="▼" horiz-adv-x="1194" d="M 1612,1171 L 1014,-27 414,1171 1612,1171 Z "/>
+   <glyph unicode="▲" horiz-adv-x="1194" d="M 414,0 L 1014,1198 1612,0 414,0 Z "/>
+   <glyph unicode="█" horiz-adv-x="1445" d="M 1451,-621 L 0,-621 0,1864 1451,1864 1451,-621 Z "/>
+   <glyph unicode="←" horiz-adv-x="1208" d="M 641,297 C 679,252 719,187 760,100 L 688,100 C 603,199 513,273 418,322 L 418,358 C 513,407 603,481 688,580 L 760,580 C 719,493 679,428 641,383 L 1630,383 1630,297 641,297 Z "/>
    <glyph unicode="ü" horiz-adv-x="986" d="M 408,1082 L 408,475 C 408,285 472,190 600,190 668,190 723,219 765,278 806,336 827,411 827,502 L 827,1082 1108,1082 1108,242 C 1108,150 1111,69 1116,0 L 848,0 C 840,96 836,168 836,215 L 831,215 C 794,133 746,73 689,36 631,-1 562,-20 483,-20 368,-20 280,15 219,86 158,156 127,259 127,395 L 127,1082 408,1082 Z M 732,1199 L 732,1418 949,1418 949,1199 732,1199 Z M 298,1199 L 298,1418 512,1418 512,1199 298,1199 Z "/>
    <glyph unicode="y" horiz-adv-x="1109" d="M 283,-425 C 216,-425 157,-421 106,-412 L 106,-212 C 141,-217 174,-220 203,-220 243,-220 276,-214 303,-201 329,-188 353,-167 374,-138 395,-109 418,-59 444,11 L 16,1082 313,1082 483,575 C 510,502 543,391 584,241 L 609,336 674,571 834,1082 1128,1082 700,-57 C 643,-196 583,-292 522,-345 460,-398 380,-425 283,-425 Z "/>
    <glyph unicode="v" horiz-adv-x="1119" d="M 731,0 L 395,0 8,1082 305,1082 494,477 C 504,444 528,360 565,227 572,254 585,302 606,371 627,440 703,677 836,1082 L 1130,1082 731,0 Z "/>
@@ -57,7 +60,7 @@
   </font>
  </defs>
  <defs class="TextShapeIndex">
-  <g ooo:slide="id1" ooo:id-list="id3 id4 id5 id6 id7"/>
+  <g ooo:slide="id1" ooo:id-list="id3 id4 id5 id6 id7 id8 id9 id10"/>
  </defs>
  <defs class="EmbeddedBulletChars">
   <g id="bullet-char-template-57356" transform="scale(0.00048828125,-0.00048828125)">
@@ -111,14 +114,6 @@
       </g>
       <g class="com.sun.star.drawing.CustomShape">
        <g id="id4">
-        <rect class="BoundingBox" stroke="none" fill="none" x="-25" y="-25" width="9051" height="1551"/>
-        <path fill="rgb(255,255,255)" stroke="none" d="M 4500,1500 L 0,1500 0,0 9000,0 9000,1500 4500,1500 Z "/>
-        <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 4500,1500 L 0,1500 0,0 9000,0 9000,1500 4500,1500 Z "/>
-        <text class="SVGTextShape"><tspan class="TextParagraph"><tspan class="TextPosition" x="500" y="945"><tspan font-family="Liberation Sans, sans-serif" font-size="564px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="808" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">⭠   </tspan><tspan font-family="Liberation Sans, sans-serif" font-size="423px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="1530" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">Presets</tspan></tspan></tspan></text>
-       </g>
-      </g>
-      <g class="com.sun.star.drawing.CustomShape">
-       <g id="id5">
         <rect class="BoundingBox" stroke="none" fill="none" x="-25" y="1475" width="9051" height="1551"/>
         <path fill="rgb(255,255,255)" stroke="none" d="M 4500,3000 L 0,3000 0,1500 9000,1500 9000,3000 4500,3000 Z "/>
         <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 4500,3000 L 0,3000 0,1500 9000,1500 9000,3000 4500,3000 Z "/>
@@ -126,7 +121,7 @@
        </g>
       </g>
       <g class="com.sun.star.drawing.CustomShape">
-       <g id="id6">
+       <g id="id5">
         <rect class="BoundingBox" stroke="none" fill="none" x="-25" y="4475" width="9051" height="1551"/>
         <path fill="rgb(255,255,255)" stroke="none" d="M 4500,6000 L 0,6000 0,4500 9000,4500 9000,6000 4500,6000 Z "/>
         <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 4500,6000 L 0,6000 0,4500 9000,4500 9000,6000 4500,6000 Z "/>
@@ -134,11 +129,45 @@
        </g>
       </g>
       <g class="com.sun.star.drawing.CustomShape">
-       <g id="id7">
+       <g id="id6">
         <rect class="BoundingBox" stroke="none" fill="none" x="-25" y="2975" width="9051" height="1551"/>
         <path fill="rgb(255,255,255)" stroke="none" d="M 4500,4500 L 0,4500 0,3000 9000,3000 9000,4500 4500,4500 Z "/>
         <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 4500,4500 L 0,4500 0,3000 9000,3000 9000,4500 4500,4500 Z "/>
         <text class="SVGTextShape"><tspan class="TextParagraph"><tspan class="TextPosition" x="300" y="3689"><tspan font-family="Liberation Sans, sans-serif" font-size="423px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="1788" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">Für Elise</tspan></tspan></tspan><tspan class="TextParagraph"><tspan class="TextPosition" x="300" y="4136"><tspan font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="5917" fill="rgb(153,153,153)" stroke="none" style="white-space: pre">152 BPM, Accent every 3 beats, Click sound</tspan></tspan></tspan></text>
+       </g>
+      </g>
+      <g class="com.sun.star.drawing.CustomShape">
+       <g id="id7">
+        <rect class="BoundingBox" stroke="none" fill="none" x="-25" y="-25" width="9051" height="1551"/>
+        <path fill="rgb(255,255,255)" stroke="none" d="M 4500,1500 L 0,1500 0,0 9000,0 9000,1500 4500,1500 Z "/>
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 4500,1500 L 0,1500 0,0 9000,0 9000,1500 4500,1500 Z "/>
+        <text class="SVGTextShape"><tspan class="TextParagraph"><tspan class="TextPosition" x="300" y="996"><tspan font-family="Liberation Sans, sans-serif" font-size="706px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="707" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">←</tspan><tspan font-family="Liberation Sans, sans-serif" font-size="423px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="1883" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">   Presets</tspan></tspan></tspan></text>
+       </g>
+      </g>
+      <g class="Group">
+       <g class="com.sun.star.drawing.CustomShape">
+        <g id="id8">
+         <rect class="BoundingBox" stroke="none" fill="none" x="8475" y="1975" width="551" height="16051"/>
+         <path fill="rgb(255,255,255)" stroke="none" d="M 8750,18000 L 8500,18000 8500,2000 9000,2000 9000,18000 8750,18000 Z "/>
+         <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 8750,18000 L 8500,18000 8500,2000 9000,2000 9000,18000 8750,18000 Z "/>
+         <text class="SVGTextShape"><tspan class="TextParagraph"><tspan class="TextPosition" x="8650" y="2576"><tspan font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="201" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">█</tspan></tspan></tspan><tspan class="TextParagraph"><tspan class="TextPosition" x="8650" y="2894"><tspan font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="201" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">█</tspan></tspan></tspan><tspan class="TextParagraph"><tspan class="TextPosition" x="8650" y="3212"><tspan font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="201" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">█</tspan></tspan></tspan></text>
+        </g>
+       </g>
+       <g class="com.sun.star.drawing.CustomShape">
+        <g id="id9">
+         <rect class="BoundingBox" stroke="none" fill="none" x="8475" y="1475" width="551" height="551"/>
+         <path fill="rgb(255,255,255)" stroke="none" d="M 8750,2000 L 8500,2000 8500,1500 9000,1500 9000,2000 8750,2000 Z "/>
+         <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 8750,2000 L 8500,2000 8500,1500 9000,1500 9000,2000 8750,2000 Z "/>
+         <text class="SVGTextShape"><tspan class="TextParagraph"><tspan class="TextPosition" x="8609" y="1849"><tspan font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="281" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">▲</tspan></tspan></tspan></text>
+        </g>
+       </g>
+       <g class="com.sun.star.drawing.CustomShape">
+        <g id="id10">
+         <rect class="BoundingBox" stroke="none" fill="none" x="8475" y="17975" width="551" height="551"/>
+         <path fill="rgb(255,255,255)" stroke="none" d="M 8750,18500 L 8500,18500 8500,18000 9000,18000 9000,18500 8750,18500 Z "/>
+         <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" stroke-linecap="round" d="M 8750,18500 L 8500,18500 8500,18000 9000,18000 9000,18500 8750,18500 Z "/>
+         <text class="SVGTextShape"><tspan class="TextParagraph"><tspan class="TextPosition" x="8609" y="18349"><tspan font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="700" lengthAdjust="spacingAndGlyphs" textLength="281" fill="rgb(0,0,0)" stroke="none" style="white-space: pre">▼</tspan></tspan></tspan></text>
+        </g>
        </g>
       </g>
      </g>
