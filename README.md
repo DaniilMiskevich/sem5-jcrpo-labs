@@ -24,4 +24,6 @@ A combined metronome and tone generator flutter app for musical practice, featur
 
 - [Sequences](./z_docs/sequence/sequences.md)
 
+- [States](./z_docs/state/states.md)
+
 - [Code](code/)
