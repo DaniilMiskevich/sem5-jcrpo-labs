@@ -32,7 +32,7 @@
 **Alternate Flows:**
 
 - A1: Use Tap Tempo:
-    1. User taps inside the **Tap Tempo** button repeatedly to set the BPM.
+    1. User taps **Tap Tempo** button repeatedly to set the BPM.
     1. System calculates and sets the BPM based on tap intervals.
     1. The flow continues from the step 3 of the main flow.
 
@@ -128,7 +128,7 @@
     1. After step 4 user cancels the edit.
     1. System discards changes and returns to the preset list.
 
-- A2: Delete Preset:
+- A2: Delete Metronome Preset:
     1. After step 4 user selects **Delete** option.
     1. System removes the selected preset.
 
@@ -179,7 +179,7 @@
     1. After step 4 user cancels the edit.
     1. System discards changes and returns to the custom sound list.
 
-- A2: Delete Preset:
+- A2: Delete Custom Sound:
     1. After step 4 user selects **Delete** option.
     1. System removes the selected custom sound.
 
