@@ -1,4 +1,4 @@
-# Sequence
+# Sequences
 
 ## 1 The Sequence Diagrams for the Core Use Cases
 
