@@ -43,21 +43,21 @@ The user interface shall consist of three main screens, navigable via a bottom n
 
 #### 2.2.1 Metronome screen. 
 
-![Metronome screen](ui_mockups/metronome_screen.svg)
+![Metronome screen](./ui_mockups/metronome_screen.svg)
 
 This is the primary screen featuring a preset selector, a BPM dial/slider, time signature selector, tap tempo button and start/stop controls. Visual feedback will be prominently displayed on the each beat.
 
 
 #### 2.2.2 Tuner screen.
 
-![Tuner screen](ui_mockups/tuner_screen.svg)
+![Tuner screen](./ui_mockups/tuner_screen.svg)
 
 This is the second screen dedicated to the tone generator. It will feature a frequency selector, a volume control and start/stop controls.
 
 
 #### 2.2.3 Settings screen.
 
-![Settings screen](ui_mockups/settings_screen.svg)
+![Settings screen](./ui_mockups/settings_screen.svg)
 
 This screen hosts account and application settings (e.g. theme), and a button to navigate to the metronome presets and loaded sounds screen.
 
@@ -66,14 +66,14 @@ Additinal screens that are navigatable only from on other screens:
 
 #### 2.2.4 Presets screen.
 
-![Presets screen](ui_mockups/presets_screen.svg)
+![Presets screen](./ui_mockups/presets_screen.svg)
 
 This is a screen for managing metronome presets (view, edit, delete).
 
 
 #### 2.2.5 Custom sounds screen.
 
-![Custom sounds screen](ui_mockups/custom_sounds_screen.svg)
+![Custom sounds screen](./ui_mockups/custom_sounds_screen.svg)
 
 This is a screen for managing loaded sounds (load in, view, edit, delete).
 

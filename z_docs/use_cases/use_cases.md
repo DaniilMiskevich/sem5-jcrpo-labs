@@ -1,6 +1,6 @@
 # Use Cases
 
-![Use Cases Diagram](use_cases_diagram.svg)
+![Use Cases Diagram](./use_cases_diagram.svg)
 
 ## 1 Actors
 
