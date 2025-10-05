@@ -13,13 +13,13 @@
 | **MetronomeSound**                     | Audio sample used for metronome clicks, can be built-in or user-created     |
 | **MetronomeConfig**                    | Settings for metronome operation (tempo, accent beat, click sound)          |
 | **TunerConfig**                        | Settings for audio tuning functionality (frequency, volume, waveform type)  |
-| **Preset<T>**                          | Generic class for storing presets of any type                               |
-| **StorageRepo<ID, T>**                 | Generic interface for data persistence operations (CRUD)                    |
+| **Preset\<T\>**                        | Generic class for storing presets of any type                               |
+| **StorageRepo\<ID, T\>**               | Generic interface for data persistence operations (CRUD)                    |
 | **TextFileStorageRepoImpl**            | Concrete implementation for storing text data in files                      |
 | **BinFileStorageRepoImpl**             | Concrete implementation for storing binary data in files                    |
 | **MetronomePresetFileStorageRepoImpl** | Specialized repository for metronome presets using file storage             |
 | **MetronomeSoundFileStorageRepoImpl**  | Specialized repository for metronome sounds using file storage              |
-| **PresetUsecases<T>**                  | Business logic layer for managing configuration presets                     |
+| **PresetUsecases\<T\>**                | Business logic layer for managing configuration presets                     |
 | **MetronomeSoundUsecases**             | Business logic layer for managing metronome sounds with built-in fallbacks  |
 
 
