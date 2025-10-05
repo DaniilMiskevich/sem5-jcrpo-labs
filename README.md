@@ -16,14 +16,26 @@ A combined metronome and tone generator flutter app for musical practice, featur
 
 ## Links
 
+### Lab 2
+
 - [Software Requirements Specification (SRS)](./z_docs/srs/srs.md)
 
-- [Use Cases](./z_docs/use_cases/use_cases.md)
 
-- [Activities](./z_docs/activity/activities.md)
+### Labs 3 and 4
 
-- [Sequences](./z_docs/sequence/sequences.md)
+- [Use Cases](./z_docs/use_case/use_cases.md)
 
-- [States](./z_docs/state/states.md)
+- [Activity Diagrams](./z_docs/activity/activities.md)
 
-- [Code](code/)
+- [Sequence Diagrams](./z_docs/sequence/sequences.md)
+
+- [State Diagrams](./z_docs/state/states.md)
+
+- [Class Diagram](./z_docs/class/classes.md)
+
+- [Component and Deployment Diagram](./z_docs/component_and_deployment/component_and_deployment.md)
+
+
+<!-- ### Lab 5 -->
+
+<!-- - [Code](code/) -->

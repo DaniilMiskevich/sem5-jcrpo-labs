@@ -1,0 +1,1831 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="687.61475"
+   preserveAspectRatio="none"
+   version="1.1"
+   viewBox="0 0 2392.4285 687.61475"
+   width="2392.4285"
+   zoomAndPan="magnify"
+   id="svg80"
+   sodipodi:docname="class_diagram.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview80"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.48384421"
+     inkscape:cx="978.62079"
+     inkscape:cy="-149.84162"
+     inkscape:window-width="2512"
+     inkscape:window-height="1408"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg80"
+     showguides="false">
+    <inkscape:page
+       x="1.6677818e-07"
+       y="3.029238e-08"
+       width="2392.4285"
+       height="687.61475"
+       id="page80"
+       margin="0 0 0 0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     class="entity"
+     data-entity="User"
+     data-source-line="1"
+     data-uid="ent0002"
+     id="entity_User"
+     transform="translate(-1077.4977,437.99245)">
+    <rect
+       fill="#f1f1f1"
+       height="113.1875"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="339.1611"
+       x="1510.63"
+       y="104.84"
+       id="rect1" />
+    <circle
+       cx="1660.0055"
+       cy="120.84"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse1"
+       r="11" />
+    <path
+       d="m 1662.9742,126.4806 q -0.5781,0.2969 -1.2187,0.4375 -0.6406,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7032,0 1.3438,0.1562 0.6562,0.1563 1.2187,0.4532 v 2.7187 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2657 0.5937,-0.2812 1.2187,-0.8593 z"
+       fill="#000000"
+       id="path1" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="31.9102"
+       x="1680.5055"
+       y="125.6867"
+       id="text1">User</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1511.63"
+       x2="1848.7911"
+       y1="136.84"
+       y2="136.84"
+       id="line1" />
+    <circle
+       cx="1521.63"
+       cy="150.4884"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse2"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="111.3643"
+       x="1530.63"
+       y="153.8351"
+       id="text2">final String uuid</text>
+    <circle
+       cx="1521.63"
+       cy="166.78529"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse3"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="119.4512"
+       x="1530.63"
+       y="170.132"
+       id="text3">final String email</text>
+    <circle
+       cx="1521.63"
+       cy="183.0822"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse4"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="151.0811"
+       x="1530.63"
+       y="186.42889"
+       id="text4">final String username</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1511.63"
+       x2="1848.7911"
+       y1="193.73061"
+       y2="193.73061"
+       id="line4" />
+    <circle
+       cx="1521.63"
+       cy="207.3791"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse5"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="313.1611"
+       x="1530.63"
+       y="210.72569"
+       id="text5">User(String, email: String, username: String)</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="MetronomeSound"
+     data-source-line="8"
+     data-uid="ent0003"
+     id="entity_MetronomeSound"
+     transform="translate(-648.389,-257.46824)">
+    <rect
+       fill="#f1f1f1"
+       height="145.7813"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="638.14447"
+       x="1254.14"
+       y="557.15002"
+       id="rect5" />
+    <circle
+       cx="1506.8236"
+       cy="573.15002"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse6"
+       r="11" />
+    <path
+       d="m 1509.7923,578.7906 q -0.5781,0.2969 -1.2187,0.4375 -0.6406,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6406 -1.3125,-1.6563 -1.3125,-4.7813 0,-3.125 1.3125,-4.7812 1.3281,-1.6563 3.8281,-1.6563 0.7032,0 1.3438,0.1563 0.6562,0.1562 1.2187,0.4531 v 2.7187 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0782 -0.6875,1.0625 -0.6875,3.1562 0,2.0938 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2656 0.5937,-0.2813 1.2187,-0.8594 z"
+       fill="#000000"
+       id="path6" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="124.2773"
+       x="1527.3236"
+       y="577.9967"
+       id="text6">MetronomeSound</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1255.14"
+       x2="1891.2845"
+       y1="589.15002"
+       y2="589.15002"
+       id="line6" />
+    <circle
+       cx="1265.14"
+       cy="602.7984"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse7"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="77.519501"
+       x="1274.14"
+       y="606.14508"
+       id="text7">final int? id</text>
+    <circle
+       cx="1265.14"
+       cy="619.09528"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse8"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="85.934601"
+       x="1274.14"
+       y="622.44202"
+       id="text8">String name</text>
+    <circle
+       cx="1265.14"
+       cy="635.39221"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse9"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="97.863297"
+       x="1274.14"
+       y="638.73889"
+       id="text9">Uint8List data</text>
+    <circle
+       cx="1265.14"
+       cy="651.68909"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse10"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="147.7041"
+       x="1274.14"
+       y="655.03571"
+       id="text10">final bool isProtected</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1255.14"
+       x2="1891.2845"
+       y1="662.33752"
+       y2="662.33752"
+       id="line10" />
+    <circle
+       cx="1265.14"
+       cy="675.9859"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse11"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="519.51758"
+       x="1274.14"
+       y="679.33258"
+       id="text11">MetronomeSound({int? id, String name, Uint8List data, bool isProtected})</text>
+    <circle
+       cx="1265.14"
+       cy="692.28278"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse12"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="612.14447"
+       x="1274.14"
+       y="695.62952"
+       id="text12">MetronomeSound.fromAsset({int? id, String name, String assetPath, bool isProtected})</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="MetronomeConfig"
+     data-source-line="17"
+     data-uid="ent0004"
+     id="entity_MetronomeConfig"
+     transform="translate(-286.59183,223.78466)">
+    <rect
+       fill="#f1f1f1"
+       height="178.375"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="439.3418"
+       x="356.54001"
+       y="72.25"
+       id="rect12" />
+    <circle
+       cx="509.40521"
+       cy="88.25"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse13"
+       r="11" />
+    <path
+       d="m 512.374,93.8906 q -0.5781,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8281,-1.6406 -1.3125,-1.6563 -1.3125,-4.7813 0,-3.125 1.3125,-4.7812 1.3281,-1.6563 3.8281,-1.6563 0.7031,0 1.3437,0.1563 0.6563,0.1562 1.2188,0.4531 v 2.7187 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0782 -0.6875,1.0625 -0.6875,3.1562 0,2.0938 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2656 0.5938,-0.2813 1.2188,-0.8594 z"
+       fill="#000000"
+       id="path13" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="125.1113"
+       x="529.90521"
+       y="93.096703"
+       id="text13">MetronomeConfig</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="357.54001"
+       x2="794.88177"
+       y1="104.25"
+       y2="104.25"
+       id="line13" />
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="364.54001"
+       y="114.8984"
+       id="rect13" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="61.1133"
+       x="376.54001"
+       y="121.2451"
+       id="text14">int _bpm</text>
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="364.54001"
+       y="131.1953"
+       id="rect14" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="108.9375"
+       x="376.54001"
+       y="137.54201"
+       id="text15">int _accentBeat</text>
+    <circle
+       cx="367.54001"
+       cy="150.4922"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse15"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="85.640602"
+       x="376.54001"
+       y="153.8389"
+       id="text16">int? soundId</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="357.54001"
+       x2="794.88177"
+       y1="161.14059"
+       y2="161.14059"
+       id="line16" />
+    <circle
+       cx="367.54001"
+       cy="174.78909"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse16"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="92.476601"
+       x="376.54001"
+       y="178.1357"
+       id="text17">int get bpm()</text>
+    <circle
+       cx="367.54001"
+       cy="191.08591"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse17"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="145.7148"
+       x="376.54001"
+       y="194.4326"
+       id="text18">void set bpm(int val)</text>
+    <circle
+       cx="367.54001"
+       cy="207.3828"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse18"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="140.3008"
+       x="376.54001"
+       y="210.72951"
+       id="text19">int get accentBeat()</text>
+    <circle
+       cx="367.54001"
+       cy="223.6797"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse19"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="193.53909"
+       x="376.54001"
+       y="227.0264"
+       id="text20">void set accentBeat(int val)</text>
+    <circle
+       cx="367.54001"
+       cy="239.97659"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse20"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="413.3418"
+       x="376.54001"
+       y="243.3232"
+       id="text21">MetronomeConfig({int bpm, int accentBeat, int? soundId})</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="TunerConfig"
+     data-source-line="28"
+     data-uid="ent0005"
+     id="entity_TunerConfig"
+     transform="translate(-793.15245,-25.11951)">
+    <rect
+       fill="#f1f1f1"
+       height="194.67191"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="644.33789"
+       x="831.03998"
+       y="64.099998"
+       id="rect21" />
+    <circle
+       cx="1106.166"
+       cy="80.099998"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse21"
+       r="11" />
+    <path
+       d="m 1109.1347,85.7406 q -0.5781,0.2969 -1.2187,0.4375 -0.6406,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7032,0 1.3438,0.1562 0.6562,0.1563 1.2187,0.4532 v 2.7187 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2657 0.5937,-0.2812 1.2187,-0.8593 z"
+       fill="#000000"
+       id="path21" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="85.585899"
+       x="1126.666"
+       y="84.946701"
+       id="text22">TunerConfig</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="832.03998"
+       x2="1474.3779"
+       y1="96.099998"
+       y2="96.099998"
+       id="line22" />
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="839.03998"
+       y="106.7484"
+       id="rect22" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="129.69141"
+       x="851.03998"
+       y="113.0951"
+       id="text23">double _frequency</text>
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="839.03998"
+       y="123.0453"
+       id="rect23" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="111.0293"
+       x="851.03998"
+       y="129.392"
+       id="text24">double _volume</text>
+    <circle
+       cx="842.03998"
+       cy="142.34219"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse24"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="259.49219"
+       x="851.03998"
+       y="145.6889"
+       id="text25">minisound.WaveformType waveType</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="832.03998"
+       x2="1474.3779"
+       y1="152.9906"
+       y2="152.9906"
+       id="line25" />
+    <circle
+       cx="842.03998"
+       cy="166.6391"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse25"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="161.0547"
+       x="851.03998"
+       y="169.9857"
+       id="text26">double get frequency()</text>
+    <circle
+       cx="842.03998"
+       cy="182.9359"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse26"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="214.293"
+       x="851.03998"
+       y="186.28259"
+       id="text27">void set frequency(double val)</text>
+    <circle
+       cx="842.03998"
+       cy="199.2328"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse27"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="142.39259"
+       x="851.03998"
+       y="202.5795"
+       id="text28">double get volume()</text>
+    <circle
+       cx="842.03998"
+       cy="215.52969"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse28"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="195.63091"
+       x="851.03998"
+       y="218.8764"
+       id="text29">void set volume(double val)</text>
+    <circle
+       cx="842.03998"
+       cy="231.8266"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse29"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="88.696297"
+       x="851.03998"
+       y="235.1732"
+       id="text30">String note()</text>
+    <circle
+       cx="842.03998"
+       cy="248.1234"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse30"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="618.33789"
+       x="851.03998"
+       y="251.47009"
+       id="text31">TunerConfig({double frequency, double volume, minisound.WaveformType waveType})</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="ConfigPreset"
+     data-source-line="40"
+     data-uid="ent0006"
+     id="entity_ConfigPreset"
+     transform="translate(1987.4745,-68.204033)">
+    <rect
+       fill="#f1f1f1"
+       height="113.1875"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="314.42191"
+       x="7"
+       y="104.84"
+       id="rect31" />
+    <circle
+       cx="109.7324"
+       cy="120.84"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse31"
+       r="11" />
+    <path
+       d="m 112.7012,126.4806 q -0.5782,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8282,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3282,-1.6562 3.8282,-1.6562 0.7031,0 1.3437,0.1562 0.6563,0.1563 1.2188,0.4532 v 2.7187 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2657 0.5938,-0.2812 1.2188,-0.8593 z"
+       fill="#000000"
+       id="path31" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="89.126999"
+       x="173.96291"
+       y="125.6867"
+       id="text32"
+       style="line-height:0"
+       transform="translate(-25.818492)"><tspan
+         style="line-height:0;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+         id="tspan80"
+         dx="30">Preset</tspan></text>
+    <rect
+       fill="#ffffff"
+       height="15.9688"
+       style="stroke:#181818;stroke-width:1;stroke-dasharray:2, 2"
+       width="9.3301001"
+       x="315.0918"
+       y="101.84"
+       id="rect32" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       font-style="italic"
+       lengthAdjust="spacing"
+       textLength="7.3301001"
+       x="316.0918"
+       y="113.9787"
+       id="text33">T</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="8"
+       x2="320.42191"
+       y1="136.84"
+       y2="136.84"
+       id="line33" />
+    <circle
+       cx="18"
+       cy="150.4884"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse33"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="77.519501"
+       x="27"
+       y="153.8351"
+       id="text34">final int? id</text>
+    <circle
+       cx="18"
+       cy="166.78529"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse34"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="85.934601"
+       x="27"
+       y="170.132"
+       id="text35">String name</text>
+    <circle
+       cx="18"
+       cy="183.0822"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse35"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="68.8311"
+       x="27"
+       y="186.42889"
+       id="text36">T settings</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="8"
+       x2="320.42191"
+       y1="193.73061"
+       y2="193.73061"
+       id="line36" />
+    <circle
+       cx="18"
+       cy="207.3791"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse36"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="288.42191"
+       x="27"
+       y="210.72569"
+       id="text37">Preset({int? id, String name, T settings})</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="StorageRepo"
+     data-source-line="47"
+     data-uid="ent0007"
+     id="entity_StorageRepo"
+     transform="translate(-962.74829,-21.152356)">
+    <rect
+       fill="#f1f1f1"
+       height="113.1875"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="247.6826"
+       x="2253.3701"
+       y="573.45001"
+       id="rect37" />
+    <circle
+       cx="2311.8076"
+       cy="589.45001"
+       fill="#b4a7e5"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse37"
+       r="11" />
+    <path
+       d="m 2307.7294,585.2156 v -2.1562 h 7.3906 v 2.1562 h -2.4687 v 8.0781 h 2.4687 v 2.1563 h -7.3906 v -2.1563 h 2.4687 v -8.0781 z"
+       fill="#000000"
+       id="path37" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       font-style="italic"
+       lengthAdjust="spacing"
+       textLength="90.569298"
+       x="2332.3076"
+       y="594.29669"
+       id="text38">StorageRepo</text>
+    <rect
+       fill="#ffffff"
+       height="15.9688"
+       style="stroke:#181818;stroke-width:1;stroke-dasharray:2, 2"
+       width="29.7383"
+       x="2474.3142"
+       y="570.45001"
+       id="rect38" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       font-style="italic"
+       lengthAdjust="spacing"
+       textLength="27.7383"
+       x="2475.3142"
+       y="582.58868"
+       id="text39">ID, T</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2254.3701"
+       x2="2500.0525"
+       y1="605.45001"
+       y2="605.45001"
+       id="line39" />
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2254.3701"
+       x2="2500.0525"
+       y1="613.45001"
+       y2="613.45001"
+       id="line40" />
+    <circle
+       cx="2264.3701"
+       cy="627.09839"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse40"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="162.5313"
+       x="2273.3701"
+       y="630.44513"
+       id="text40">Future&lt;T?&gt; load(ID id)</text>
+    <circle
+       cx="2264.3701"
+       cy="643.39532"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse41"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="197.38091"
+       x="2273.3701"
+       y="646.742"
+       id="text41">Future&lt;Iterable&lt;ID&gt;&gt; list()</text>
+    <circle
+       cx="2264.3701"
+       cy="659.6922"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse42"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="221.6826"
+       x="2273.3701"
+       y="663.03888"
+       id="text42">Future&lt;void&gt; save(ID id, T val)</text>
+    <circle
+       cx="2264.3701"
+       cy="675.98907"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse43"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="190.3604"
+       x="2273.3701"
+       y="679.33569"
+       id="text43">Future&lt;void&gt; delete(ID id)</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="TextFileStorageRepoImpl"
+     data-source-line="54"
+     data-uid="ent0008"
+     id="entity_TextFileStorageRepoImpl"
+     transform="translate(-589.5987,6.8338632)">
+    <rect
+       fill="#f1f1f1"
+       height="64.296898"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="319.76761"
+       x="2111.3301"
+       y="375.81"
+       id="rect43" />
+    <circle
+       cx="2178.7153"
+       cy="391.81"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse44"
+       r="11" />
+    <path
+       d="m 2181.684,397.4506 q -0.5781,0.2969 -1.2187,0.4375 -0.6407,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7031,0 1.3438,0.1562 0.6562,0.1563 1.2187,0.4532 v 2.7187 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2657 0.5937,-0.2812 1.2187,-0.8593 z"
+       fill="#000000"
+       id="path44" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="176.4971"
+       x="2199.2153"
+       y="396.65671"
+       id="text44">TextFileStorageRepoImpl</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2112.3301"
+       x2="2430.0977"
+       y1="407.81"
+       y2="407.81"
+       id="line44" />
+    <circle
+       cx="2122.3301"
+       cy="421.4584"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse45"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="293.76761"
+       x="2131.3301"
+       y="424.80511"
+       id="text45">implements StorageRepo&lt;String, String&gt;</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2112.3301"
+       x2="2430.0977"
+       y1="432.1069"
+       y2="432.1069"
+       id="line45" />
+  </g>
+  <g
+     class="entity"
+     data-entity="BinFileStorageRepoImpl"
+     data-source-line="58"
+     data-uid="ent0009"
+     id="entity_BinFileStorageRepoImpl"
+     transform="translate(-900.01272,225.66258)">
+    <rect
+       fill="#f1f1f1"
+       height="64.296898"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="339.8652"
+       x="2537.28"
+       y="375.81"
+       id="rect45" />
+    <circle
+       cx="2619.0002"
+       cy="391.81"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse46"
+       r="11" />
+    <path
+       d="m 2621.969,397.4506 q -0.5782,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8282,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3282,-1.6562 3.8282,-1.6562 0.7031,0 1.3437,0.1562 0.6563,0.1563 1.2188,0.4532 v 2.7187 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2657 0.5938,-0.2812 1.2188,-0.8593 z"
+       fill="#000000"
+       id="path46" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="167.9248"
+       x="2639.5002"
+       y="396.65671"
+       id="text46">BinFileStorageRepoImpl</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2538.28"
+       x2="2876.1453"
+       y1="407.81"
+       y2="407.81"
+       id="line46" />
+    <circle
+       cx="2548.28"
+       cy="421.4584"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse47"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="313.8652"
+       x="2557.28"
+       y="424.80511"
+       id="text47">implements StorageRepo&lt;String, Uint8List&gt;</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2538.28"
+       x2="2876.1453"
+       y1="432.1069"
+       y2="432.1069"
+       id="line47" />
+  </g>
+  <g
+     class="entity"
+     data-entity="MetronomePresetFileStorageRepoImpl"
+     data-source-line="62"
+     data-uid="ent0010"
+     id="entity_MetronomePresetFileStorageRepoImpl"
+     transform="translate(-484.98354,127.44114)">
+    <rect
+       fill="#f1f1f1"
+       height="80.593803"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="447.2373"
+       x="1884.59"
+       y="121.14"
+       id="rect47" />
+    <circle
+       cx="1968.9796"
+       cy="137.14"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse48"
+       r="11" />
+    <path
+       d="m 1971.9484,142.7806 q -0.5781,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8281,-1.6406 -1.3125,-1.6563 -1.3125,-4.7813 0,-3.125 1.3125,-4.7812 1.3281,-1.6563 3.8281,-1.6563 0.7031,0 1.3437,0.1563 0.6563,0.1562 1.2188,0.4531 v 2.7187 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0782 -0.6875,1.0625 -0.6875,3.1562 0,2.0938 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2656 0.5938,-0.2813 1.2188,-0.8594 z"
+       fill="#000000"
+       id="path48" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="269.95801"
+       x="1989.4796"
+       y="141.98669"
+       id="text48">MetronomePresetFileStorageRepoImpl</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1885.59"
+       x2="2330.8274"
+       y1="153.14"
+       y2="153.14"
+       id="line48" />
+    <circle
+       cx="1895.59"
+       cy="166.78841"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse49"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="421.2373"
+       x="1904.59"
+       y="170.1351"
+       id="text49">implements StorageRepo&lt;int, Preset&lt;MetronomeConfig&gt;&gt;</text>
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="1892.59"
+       y="180.0853"
+       id="rect49" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="298.6553"
+       x="1904.59"
+       y="186.43201"
+       id="text50">final TextFileStorageRepoImpl _fileStorage</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1885.59"
+       x2="2330.8274"
+       y1="193.7338"
+       y2="193.7338"
+       id="line50" />
+  </g>
+  <g
+     class="entity"
+     data-entity="MetronomeSoundFileStorageRepoImpl"
+     data-source-line="67"
+     data-uid="ent0011"
+     id="entity_MetronomeSoundFileStorageRepoImpl"
+     transform="translate(-477.3731,365.16668)">
+    <rect
+       fill="#f1f1f1"
+       height="80.593803"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="378.73441"
+       x="2466.8401"
+       y="121.14"
+       id="rect50" />
+    <circle
+       cx="2517.0398"
+       cy="137.14"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse50"
+       r="11" />
+    <path
+       d="m 2520.0085,142.7806 q -0.5782,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8282,-1.6406 -1.3125,-1.6563 -1.3125,-4.7813 0,-3.125 1.3125,-4.7812 1.3282,-1.6563 3.8282,-1.6563 0.7031,0 1.3437,0.1563 0.6563,0.1562 1.2188,0.4531 v 2.7187 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0782 -0.6875,1.0625 -0.6875,3.1562 0,2.0938 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2656 0.5938,-0.2813 1.2188,-0.8594 z"
+       fill="#000000"
+       id="path50" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="269.83499"
+       x="2537.5398"
+       y="141.98669"
+       id="text51">MetronomeSoundFileStorageRepoImpl</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2467.8401"
+       x2="2844.5745"
+       y1="153.14"
+       y2="153.14"
+       id="line51" />
+    <circle
+       cx="2477.8401"
+       cy="166.78841"
+       fill="none"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse51"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="352.73441"
+       x="2486.8401"
+       y="170.1351"
+       id="text52">implements StorageRepo&lt;int, MetronomeSound&gt;</text>
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="2474.8401"
+       y="180.0853"
+       id="rect52" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="290.08301"
+       x="2486.8401"
+       y="186.43201"
+       id="text53">final BinFileStorageRepoImpl _fileStorage</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2467.8401"
+       x2="2844.5745"
+       y1="193.7338"
+       y2="193.7338"
+       id="line53" />
+  </g>
+  <g
+     class="entity"
+     data-entity="PresetUsecases"
+     data-source-line="72"
+     data-uid="ent0012"
+     id="entity_PresetUsecases"
+     transform="translate(-947.73307,-117.9171)">
+    <rect
+       fill="#f1f1f1"
+       height="145.7813"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="354.13181"
+       x="2912.1399"
+       y="335.07001"
+       id="rect53" />
+    <circle
+       cx="2977.5869"
+       cy="351.07001"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse53"
+       r="11" />
+    <path
+       d="m 2980.5555,356.7106 q -0.5781,0.2969 -1.2187,0.4375 -0.6406,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7032,0 1.3438,0.1562 0.6562,0.1563 1.2187,0.4532 v 2.7187 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2657 0.5937,-0.2812 1.2187,-0.8593 z"
+       fill="#000000"
+       id="path53" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="109.8398"
+       x="2998.0869"
+       y="355.91669"
+       id="text54">PresetUsecases</text>
+    <rect
+       fill="#ffffff"
+       height="15.9688"
+       style="stroke:#181818;stroke-width:1;stroke-dasharray:2, 2"
+       width="102.8984"
+       x="3166.3733"
+       y="332.07001"
+       id="rect54" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       font-style="italic"
+       lengthAdjust="spacing"
+       textLength="100.8984"
+       x="3167.3733"
+       y="344.20871"
+       id="text55">T extends Preset</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2913.1399"
+       x2="3265.2717"
+       y1="367.07001"
+       y2="367.07001"
+       id="line55" />
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="2920.1399"
+       y="377.71841"
+       id="rect55" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="248.9785"
+       x="2932.1399"
+       y="384.06509"
+       id="text56">final StorageRepo&lt;int, T&gt; _storage</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="2913.1399"
+       x2="3265.2717"
+       y1="391.36691"
+       y2="391.36691"
+       id="line56" />
+    <circle
+       cx="2923.1399"
+       cy="405.01529"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse56"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="328.13181"
+       x="2932.1399"
+       y="408.362"
+       id="text57">PresetUsecases(StorageRepo&lt;int, T&gt; storage)</text>
+    <circle
+       cx="2923.1399"
+       cy="421.31219"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse57"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="165.87399"
+       x="2932.1399"
+       y="424.65891"
+       id="text58">Future&lt;T?&gt; load(int id)</text>
+    <circle
+       cx="2923.1399"
+       cy="437.6091"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse58"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="200.7236"
+       x="2932.1399"
+       y="440.95569"
+       id="text59">Future&lt;Iterable&lt;int&gt;&gt; list()</text>
+    <circle
+       cx="2923.1399"
+       cy="453.90591"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse59"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="204.54491"
+       x="2932.1399"
+       y="457.25259"
+       id="text60">Future&lt;void&gt; save(T preset)</text>
+    <circle
+       cx="2923.1399"
+       cy="470.20279"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse60"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="215.87891"
+       x="2932.1399"
+       y="473.5495"
+       id="text61">Future&lt;void&gt; delete(T preset)</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="MetronomeSoundUsecases"
+     data-source-line="81"
+     data-uid="ent0013"
+     id="entity_MetronomeSoundUsecases"
+     transform="translate(-381.79176,-291.07046)">
+    <rect
+       fill="#f1f1f1"
+       height="178.375"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="864.65332"
+       x="1140.88"
+       y="318.76999"
+       id="rect61" />
+    <circle
+       cx="1474.0021"
+       cy="334.76999"
+       fill="#add1b2"
+       style="stroke:#181818;stroke-width:1"
+       id="ellipse61"
+       r="11" />
+    <path
+       d="m 1476.9708,340.4106 q -0.5781,0.2969 -1.2187,0.4375 -0.6407,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7031,0 1.3438,0.1562 0.6562,0.1563 1.2187,0.4532 v 2.7187 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2657 0.5937,-0.2812 1.2187,-0.8593 z"
+       fill="#000000"
+       id="path61" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="189.90919"
+       x="1494.5021"
+       y="339.6167"
+       id="text62">MetronomeSoundUsecases</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1141.88"
+       x2="2004.5333"
+       y1="350.76999"
+       y2="350.76999"
+       id="line62" />
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="1148.88"
+       y="361.4184"
+       id="rect62" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="294.28711"
+       x="1160.88"
+       y="367.76511"
+       id="text63">final Map&lt;int, MetronomeSound&gt; _builtin</text>
+    <rect
+       fill="none"
+       height="6"
+       style="stroke:#c82930;stroke-width:1"
+       width="6"
+       x="1148.88"
+       y="377.7153"
+       id="rect63" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="417.85349"
+       x="1160.88"
+       y="384.06201"
+       id="text64">final StorageRepo&lt;int, MetronomeSound&gt; _customStorage</text>
+    <line
+       style="stroke:#181818;stroke-width:0.5"
+       x1="1141.88"
+       x2="2004.5333"
+       y1="391.36371"
+       y2="391.36371"
+       id="line64" />
+    <circle
+       cx="1151.88"
+       cy="405.01221"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse64"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="838.65332"
+       x="1160.88"
+       y="408.35889"
+       id="text65">MetronomeSoundUsecases(Map&lt;int, MetronomeSound&gt; builtin, StorageRepo&lt;int, MetronomeSound&gt; customStorage)</text>
+    <circle
+       cx="1151.88"
+       cy="421.30911"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse65"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="281.59961"
+       x="1160.88"
+       y="424.6557"
+       id="text66">Future&lt;MetronomeSound?&gt; load(int id)</text>
+    <circle
+       cx="1151.88"
+       cy="437.6059"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse66"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="200.7236"
+       x="1160.88"
+       y="440.95261"
+       id="text67">Future&lt;Iterable&lt;int&gt;&gt; list()</text>
+    <circle
+       cx="1151.88"
+       cy="453.9028"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse67"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="318.11041"
+       x="1160.88"
+       y="457.24951"
+       id="text68">Future&lt;void&gt; save(MetronomeSound sound)</text>
+    <circle
+       cx="1151.88"
+       cy="470.19971"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse68"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="329.44431"
+       x="1160.88"
+       y="473.54639"
+       id="text69">Future&lt;void&gt; delete(MetronomeSound sound)</text>
+    <circle
+       cx="1151.88"
+       cy="486.49661"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:1"
+       id="ellipse69"
+       r="3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="263.32709"
+       x="1160.88"
+       y="489.8432"
+       id="text70">Future&lt;MetronomeSound&gt; fallback()</text>
+  </g>
+  <g
+     class="link"
+     data-entity-1="ConfigPreset"
+     data-entity-2="MetronomeConfig"
+     data-source-line="94"
+     data-uid="lnk15"
+     id="link_ConfigPreset_MetronomeConfig"
+     transform="rotate(-89.988439,1262.1649,-724.24414)">
+    <path
+       codeLine="94"
+       d="m 333.53,161.44 55.24921,1.72762"
+       fill="none"
+       id="ConfigPreset-backto-MetronomeConfig"
+       style="stroke:#181818;stroke-width:1"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="#181818"
+       points="327.53,165.44 333.53,161.44 327.53,157.44 321.53,161.44 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon71" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="MetronomePresetFileStorageRepoImpl"
+     data-entity-2="TextFileStorageRepoImpl"
+     data-source-line="96"
+     data-uid="lnk16"
+     id="link_MetronomePresetFileStorageRepoImpl_TextFileStorageRepoImpl"
+     transform="rotate(22.840656,1601.5383,-815.73008)">
+    <path
+       codeLine="96"
+       d="m 2141.2364,211.9846 c 5.4921,7.28377 16.8955,21.9556 23.9637,35.35912"
+       fill="none"
+       id="MetronomePresetFileStorageRepoImpl-backto-TextFileStorageRepoImpl"
+       style="stroke:#181818;stroke-width:1"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="#181818"
+       points="2134.58,202 2134.58,209.2111 2141.2364,211.9846 2141.2364,204.7735 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon72" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="MetronomeSoundFileStorageRepoImpl"
+     data-entity-2="BinFileStorageRepoImpl"
+     data-source-line="97"
+     data-uid="lnk17"
+     id="link_MetronomeSoundFileStorageRepoImpl_BinFileStorageRepoImpl"
+     transform="rotate(25.74792,1646.246,-570.13892)">
+    <path
+       codeLine="97"
+       d="m 2666.9095,213.7473 c 10.09,48.39 -126.5623,127.10092 -199.6836,157.48018"
+       fill="none"
+       id="MetronomeSoundFileStorageRepoImpl-backto-BinFileStorageRepoImpl"
+       style="stroke:#181818;stroke-width:1"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="#181818"
+       points="2669.6005,207.0572 2664.46,202 2661.769,208.6902 2666.9095,213.7473 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon73" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="PresetUsecases"
+     data-entity-2="StorageRepo"
+     data-source-line="99"
+     data-uid="lnk18"
+     id="link_PresetUsecases_StorageRepo"
+     transform="translate(-962.74829,-21.152356)">
+    <path
+       codeLine="99"
+       d="m 3113.4009,383.71447 c -13.96,5.67 -93.6041,75.80645 -226.946,129.59207 -120.3907,48.56155 -273.2424,66.10636 -379.1024,89.16636"
+       fill="none"
+       id="PresetUsecases-to-StorageRepo"
+       style="stroke:#181818;stroke-width:1"
+       sodipodi:nodetypes="csc" />
+    <polygon
+       fill="#181818"
+       points="2511.1352,605.7428 2506.3754,602.6858 2509.4324,597.9261 2501.49,603.75 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon74" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="MetronomeSoundUsecases"
+     data-entity-2="StorageRepo"
+     data-source-line="100"
+     data-uid="lnk19"
+     id="link_MetronomeSoundUsecases_StorageRepo"
+     transform="rotate(78.385304,1818.3777,6.7852576)">
+    <path
+       codeLine="100"
+       d="m 1910.9268,547.38789 c 58.8808,-5.66392 261.912,13.35932 336.3361,46.07811"
+       fill="none"
+       id="MetronomeSoundUsecases-to-StorageRepo"
+       style="stroke:#181818;stroke-width:1"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="#181818"
+       points="2245.4253,588.8159 2248.2274,593.73 2243.3133,596.5321 2253.05,595.05 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon75" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="MetronomeSoundUsecases"
+     data-entity-2="MetronomeSound"
+     data-source-line="101"
+     data-uid="lnk20"
+     id="link_MetronomeSoundUsecases_MetronomeSound"
+     transform="translate(-576.93001,-258.33043)">
+    <path
+       codeLine="101"
+       d="M 1582.9039,463.91439 1573.21,550.85"
+       fill="none"
+       id="MetronomeSoundUsecases-to-MetronomeSound"
+       style="stroke:#181818;stroke-width:1"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="#181818"
+       points="1573.21,551.85 1569.21,547.85 1573.21,556.85 1577.21,547.85 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon76" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="TextFileStorageRepoImpl"
+     data-entity-2="StorageRepo"
+     data-source-line="103"
+     data-uid="lnk21"
+     id="link_TextFileStorageRepoImpl_StorageRepo"
+     transform="rotate(58.921289,1942.8587,-194.34647)">
+    <path
+       codeLine="103"
+       d="m 2359.3618,356.87182 c 16.66,34.59 -37.0648,158.17218 -16.8048,200.22218"
+       fill="none"
+       id="TextFileStorageRepoImpl-to-StorageRepo"
+       style="stroke:#181818;stroke-width:1;stroke-dasharray:7, 7"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="none"
+       points="2337.1517,559.6984 2350.37,573.31 2347.9624,554.4897 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon77" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="BinFileStorageRepoImpl"
+     data-entity-2="StorageRepo"
+     data-source-line="104"
+     data-uid="lnk22"
+     id="link_BinFileStorageRepoImpl_StorageRepo"
+     transform="rotate(49.658776,1951.462,-400.61772)">
+    <path
+       codeLine="104"
+       d="m 2536.3901,509.53521 c -9.2025,7.79307 -52.3658,48.8392 -60.315,53.56749"
+       fill="none"
+       id="BinFileStorageRepoImpl-to-StorageRepo"
+       style="stroke:#181818;stroke-width:1;stroke-dasharray:7, 7"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="none"
+       points="2472.746,558.111 2461.1,573.09 2479.4042,568.0943 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon78" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="MetronomePresetFileStorageRepoImpl"
+     data-entity-2="StorageRepo"
+     data-source-line="105"
+     data-uid="lnk23"
+     id="link_MetronomePresetFileStorageRepoImpl_StorageRepo"
+     transform="rotate(62.151381,1880.9467,-114.68327)">
+    <path
+       codeLine="105"
+       d="m 2100.3817,420.6697 c 8.665,90.64027 89.663,154.00244 135.6412,177.5438"
+       fill="none"
+       id="MetronomePresetFileStorageRepoImpl-to-StorageRepo"
+       style="stroke:#181818;stroke-width:1;stroke-dasharray:7, 7"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="none"
+       points="2237.8584,592.5012 2234.1875,603.9259 2253.16,603.72 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon79" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="MetronomeSoundFileStorageRepoImpl"
+     data-entity-2="StorageRepo"
+     data-source-line="106"
+     data-uid="lnk24"
+     id="link_MetronomeSoundFileStorageRepoImpl_StorageRepo"
+     transform="rotate(45.353011,1938.0766,-451.07277)">
+    <path
+       codeLine="106"
+       d="m 2672.3774,202.8573 c -87.443,157.18654 -176.4202,229.46223 -254.7039,354.6302"
+       fill="none"
+       id="MetronomeSoundFileStorageRepoImpl-to-StorageRepo"
+       style="stroke:#181818;stroke-width:1;stroke-dasharray:7, 7"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       fill="none"
+       points="2412.416,554.5964 2409,573.26 2422.931,560.3787 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon80" />
+  </g>
+</svg>

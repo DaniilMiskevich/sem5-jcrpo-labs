@@ -8,7 +8,7 @@
 |----------------------|--------------------------------------------------------------------|
 | User                 | A person using the application. Presumably, a musician.            |
 | Authenticated User   | A user that used the **Login with Google** option to authenticate. |
-| Unauthenticated User | A user that used the **Login with Google** option to authenticate. |
+| Unauthenticated User | A user that didn't use a **Login with Google** option.             |
 | Browser              | The application on the User's OS used to brouse the Internet.      |
 
 
