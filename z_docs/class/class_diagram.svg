@@ -24,16 +24,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.48384421"
-     inkscape:cx="978.62079"
-     inkscape:cy="-149.84162"
+     inkscape:zoom="0.69846271"
+     inkscape:cx="1028.6877"
+     inkscape:cy="560.51668"
      inkscape:window-width="2512"
      inkscape:window-height="1408"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg80"
-     showguides="false">
+     showguides="false"
+     showgrid="false">
     <inkscape:page
        x="1.6677818e-07"
        y="3.029238e-08"
@@ -45,6 +46,14 @@
   </sodipodi:namedview>
   <defs
      id="defs1" />
+  <rect
+     style="fill:#ffffff;stroke:none;stroke-width:3.77953"
+     id="rect2"
+     width="2391.1577"
+     height="686.23706"
+     x="1.2086476"
+     y="-1.4221197"
+     transform="rotate(0.10121034)" />
   <g
      class="entity"
      data-entity="User"
