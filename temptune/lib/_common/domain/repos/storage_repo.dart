@@ -4,4 +4,3 @@ abstract interface class StorageRepo<ID, T> {
   Future<void> save(ID id, T val);
   Future<void> delete(ID id);
 }
-

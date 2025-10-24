@@ -1,46 +1,54 @@
-import 'dart:io';
-import 'dart:typed_data';
+import "dart:io";
+
+import "package:temptune/_common/domain/repos/storage_repo.dart";
 
 class TextFileStorageRepoImpl implements StorageRepo<String, String> {
-  final String basePath;
-
   TextFileStorageRepoImpl(this.basePath);
+
+  final String basePath;
 
   @override
   Future<String?> load(String id) async {
     try {
-      final file = File('$basePath/$id');
-      if (await file.exists()) {
-        return await file.readAsString();
-      }
-      return null;
-    } catch (e) {
+      final str = await File("$basePath/$id").readAsString();
+      return str;
+    } on FileSystemException {
       return null;
     }
   }
 
   @override
   Future<Iterable<String>> list() async {
-    final dir = Directory(basePath);
-    if (await dir.exists()) {
-      return dir.list().where((entity) => entity is File).map((entity) => entity.uri.pathSegments.last);
+    try {
+      final list = await Directory(basePath)
+          .list()
+          .where((entity) => entity is File)
+          .map((entity) => entity.uri.pathSegments.last)
+          .toList();
+      return list;
+    } on FileSystemException {
+      return const Iterable.empty();
     }
-    return [];
   }
 
   @override
   Future<void> save(String id, String val) async {
-    final file = File('$basePath/$id');
-    await file.create(recursive: true);
-    await file.writeAsString(val);
+    try {
+      final file = File("$basePath/$id");
+      await file.create(recursive: true);
+      await file.writeAsString(val);
+    } on FileSystemException {
+      throw Exception("Saving failed!");
+    }
   }
 
   @override
   Future<void> delete(String id) async {
-    final file = File('$basePath/$id');
-    if (await file.exists()) {
+    try {
+      final file = File("$basePath/$id");
       await file.delete();
+    } on FileSystemException {
+      // ignore
     }
   }
 }
-

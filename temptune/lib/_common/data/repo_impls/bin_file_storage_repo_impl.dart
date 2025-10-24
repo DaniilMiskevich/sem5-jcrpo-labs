@@ -1,17 +1,19 @@
-class BinFileStorageRepoImpl implements StorageRepo<String, Uint8List> {
-  final String basePath;
+import "dart:io";
+import "dart:typed_data";
 
+import "package:temptune/_common/domain/repos/storage_repo.dart";
+
+class BinFileStorageRepoImpl implements StorageRepo<String, Uint8List> {
   BinFileStorageRepoImpl(this.basePath);
+
+  final String basePath;
 
   @override
   Future<Uint8List?> load(String id) async {
     try {
-      final file = File('$basePath/$id');
-      if (await file.exists()) {
-        return await file.readAsBytes();
-      }
-      return null;
-    } catch (e) {
+      final file = File("$basePath/$id");
+      return await file.readAsBytes();
+    } on FileSystemException {
       return null;
     }
   }
@@ -19,25 +21,35 @@ class BinFileStorageRepoImpl implements StorageRepo<String, Uint8List> {
   @override
   Future<Iterable<String>> list() async {
     final dir = Directory(basePath);
-    if (await dir.exists()) {
-      return dir.list().where((entity) => entity is File).map((entity) => entity.uri.pathSegments.last);
+    try {
+      return dir
+          .list()
+          .where((entity) => entity is File)
+          .map((entity) => entity.uri.pathSegments.last)
+          .toList();
+    } on FileSystemException {
+      return const Iterable.empty();
     }
-    return [];
   }
 
   @override
   Future<void> save(String id, Uint8List val) async {
-    final file = File('$basePath/$id');
-    await file.create(recursive: true);
-    await file.writeAsBytes(val);
+    try {
+      final file = File("$basePath/$id");
+      await file.create(recursive: true);
+      await file.writeAsBytes(val);
+    } on FileSystemException {
+      throw Exception("Saving failed!");
+    }
   }
 
   @override
   Future<void> delete(String id) async {
-    final file = File('$basePath/$id');
-    if (await file.exists()) {
+    final file = File("$basePath/$id");
+    try {
       await file.delete();
+    } on FileSystemException {
+      // ignore
     }
   }
 }
-
