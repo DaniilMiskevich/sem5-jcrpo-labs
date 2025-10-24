@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
+import "package:temptune/_common/service/sound_service.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
-import "package:temptune/metronome/service/metronome_service.dart";
 
 class MetronomeScreen extends StatefulWidget {
   const MetronomeScreen({super.key});
@@ -11,16 +11,16 @@ class MetronomeScreen extends StatefulWidget {
 
 class _MetronomeScreenState extends State<MetronomeScreen> {
   final _config = MetronomeConfig();
-  final _metronomeService = MetronomeService();
+  final _soundService = SoundService();
   bool _isRunning = false;
   DateTime? _lastTap;
   final List<DateTime> _taps = [];
 
   void _toggleMetronome() => setState(() {
     if (_isRunning) {
-      _metronomeService.stopMetronome();
+      _soundService.stopMetronome();
     } else {
-      _metronomeService.startMetronome();
+      _soundService.startMetronome(_config);
     }
     _isRunning = !_isRunning;
   });
@@ -36,7 +36,7 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
 
         if (_taps.length >= 2) {
           final intervals = <int>[];
-          for (int i = 1; i < _taps.length; i++) {
+          for (var i = 1; i < _taps.length; i++) {
             intervals.add(_taps[i].difference(_taps[i - 1]).inMilliseconds);
           }
           final averageInterval =

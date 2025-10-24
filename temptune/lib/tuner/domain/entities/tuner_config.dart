@@ -1,6 +1,6 @@
 import "dart:math";
 
-import "package:minisound/minisound.dart";
+import "package:minisound/engine.dart";
 
 class TunerConfig {
   TunerConfig({

@@ -17,12 +17,17 @@ final class MetronomeSoundUsecases {
 
   Future<void> save(MetronomeSound sound) async {
     if (sound.isProtected) throw Exception("Cannot modify protected sounds.");
-    await _customStorage.save(sound.id, sound);
+    await _customStorage.save(
+      sound.id ?? DateTime.now().millisecondsSinceEpoch,
+      sound,
+    );
   }
 
   Future<void> delete(MetronomeSound sound) async {
     if (sound.isProtected) throw Exception("Cannot delete protected sounds.");
-    await _customStorage.delete(sound.id);
+
+    if (sound.id == null) return;
+    await _customStorage.delete(sound.id!);
   }
 
   Future<MetronomeSound> fallback() => Future.value(_builtin.values.first);

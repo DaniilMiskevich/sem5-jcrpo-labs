@@ -10,7 +10,11 @@ final class PresetUsecases<T extends Preset> {
 
   Future<Iterable<int>> list() => _storage.list();
 
-  Future<void> save(T preset) async => _storage.save(preset.id, preset);
+  Future<void> save(T preset) async =>
+      _storage.save(preset.id ?? DateTime.now().millisecondsSinceEpoch, preset);
 
-  Future<void> delete(T preset) async => _storage.delete(preset.id);
+  Future<void> delete(T preset) async {
+    if (preset.id == null) return;
+    await _storage.delete(preset.id!);
+  }
 }
