@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:provider/provider.dart";
 import "package:temptune/_common/service/sound_service.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
 
@@ -11,10 +12,11 @@ class MetronomeScreen extends StatefulWidget {
 
 class _MetronomeScreenState extends State<MetronomeScreen> {
   final _config = MetronomeConfig();
-  final _soundService = SoundService();
   bool _isRunning = false;
   DateTime? _lastTap;
   final List<DateTime> _taps = [];
+
+  late final _soundService = context.read<SoundService>();
 
   void _toggleMetronome() => setState(() {
     if (_isRunning) {

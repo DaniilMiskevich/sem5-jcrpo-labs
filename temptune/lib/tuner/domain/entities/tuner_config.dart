@@ -1,18 +1,18 @@
-import "dart:math";
-
 import "package:minisound/engine.dart";
+import "package:temptune/tuner/domain/entities/note.dart";
 
 class TunerConfig {
   TunerConfig({
     double frequency = 440.0,
-    double volume = 0.5,
+    double volume = 0.3,
     this.waveType = WaveformType.sine,
   });
 
-  double _frequency = 440.0;
-  double get frequency => _frequency;
-  set frequency(double val) =>
-      _frequency = val.clamp(27.5 /* A0 */, 7040 /* A8 */);
+  static const freqMin = 65.41 /* C2 */, freqMax = 4186.01 /* C8 */;
+
+  double _freq = 440.0;
+  double get freq => _freq;
+  set freq(double val) => _freq = val.clamp(freqMin, freqMax);
 
   double _volume = 0.5;
   double get volume => _volume;
@@ -20,26 +20,5 @@ class TunerConfig {
 
   WaveformType waveType;
 
-  String note() {
-    const notes = [
-      "A",
-      "A#",
-      "B",
-      "C",
-      "C#",
-      "D",
-      "D#",
-      "E",
-      "F",
-      "F#",
-      "G",
-      "G#",
-    ];
-    final logNote = log(pow(2, 1 / 12));
-
-    final noteIndex = (log(_frequency - 440.0 /* A4 */) / logNote).floor();
-    final note = notes[noteIndex % 12];
-    final octave = noteIndex ~/ 12;
-    return "$note:$octave";
-  }
+  Note note() => Note(_freq);
 }

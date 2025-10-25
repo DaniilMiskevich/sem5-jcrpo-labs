@@ -1,0 +1,24 @@
+{
+    "tasks": {
+        "get": {
+            "icon": "󰇚",
+            "desc": "get packages",
+            "cmd": "make get",
+            "noninteractive": true
+        },
+        "clean": {
+            "icon": "󰃢",
+            "cmd": "make clean",
+            "noninteractive": true
+        },
+        "run": {
+            "icon": "󰐊",
+            "cmd": "make run"
+        },
+        "test": {
+            "icon": "󰙨",
+            "cmd": "make test"
+        }
+    }
+}
+

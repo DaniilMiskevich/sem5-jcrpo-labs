@@ -8,7 +8,7 @@ import "package:temptune/tuner/domain/entities/tuner_config.dart";
 final class SoundService {
   final _engine = Engine();
 
-  Future<void> initialize() => _engine.init().then((_) => _engine.start());
+  Future<void> init() => _engine.init().then((_) => _engine.start());
 
   // TODO! bad
   final storage = MetronomeSoundFileStorageRepoImpl(
@@ -37,10 +37,7 @@ final class SoundService {
   void startTuner(TunerConfig config) {
     if (_tunerSound != null) return;
 
-    final tunerSound = _engine.genWaveform(
-      config.waveType,
-      freq: config.frequency,
-    );
+    final tunerSound = _engine.genWaveform(config.waveType, freq: config.freq);
     tunerSound.volume = config.volume;
     tunerSound.play();
     _tunerSound = tunerSound;
