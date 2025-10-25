@@ -27,11 +27,17 @@ class _MainScreenState extends State<MainScreen> {
       onTap: _onItemTapped,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.music_note),
+          icon: Icon(Icons.music_note_rounded),
           label: "Metronome",
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.tune), label: "Tuner"),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.equalizer_rounded),
+          label: "Tuner",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings_rounded),
+          label: "Settings",
+        ),
       ],
     ),
   );

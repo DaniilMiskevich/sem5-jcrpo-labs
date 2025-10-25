@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:temptune/_common/service/sound_service.dart";
+import "package:temptune/_common/ui/widgets/space.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
+import "package:temptune/tuner/ui/widgets/my_circular_slider.dart";
 
 class MetronomeScreen extends StatefulWidget {
   const MetronomeScreen({super.key});
@@ -25,6 +27,16 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
       _soundService.startMetronome(_config);
     }
     _isRunning = !_isRunning;
+  });
+
+  void _updateBpm(int bpm) => setState(() {
+    _config.bpm = bpm;
+    // TODO apply dynamically
+  });
+
+  void _updateAccentBeat(int accentBeat) => setState(() {
+    _config.accentBeat = accentBeat;
+    // TODO apply dynamically
   });
 
   void _handleTapTempo() {
@@ -52,87 +64,157 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: const Text("Metronome"),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.save),
-          onPressed: _showSavePresetDialog,
-        ),
-      ],
+    appBar: AppBar(title: const Text("Metronome")),
+    floatingActionButton: FloatingActionButton(
+      onPressed: _toggleMetronome,
+      child: Icon(_isRunning ? Icons.stop_rounded : Icons.play_arrow_rounded),
     ),
-    body: Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // BPM Display and Control
-          Text(
-            "${_config.bpm} BPM",
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
-          Slider(
-            value: _config.bpm.toDouble(),
-            min: 30,
-            max: 250,
-            onChanged: (value) {
-              setState(() {
-                _config.bpm = value.round();
-              });
-            },
-          ),
-
-          // Accent Beat Control
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Accent every:"),
-              const SizedBox(width: 8),
-              DropdownButton<int>(
-                value: _config.accentBeat,
-                items: [1, 2, 3, 4, 6, 8, 12, 16]
+    body: ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+              child: DropdownMenu(
+                initialSelection: "Foo",
+                dropdownMenuEntries: ["Foo", "Bar"]
                     .map(
-                      (beat) => DropdownMenuItem<int>(
-                        value: beat,
-                        child: Text("$beat beats"),
-                      ),
+                      (preset) =>
+                          DropdownMenuEntry(value: preset, label: preset),
                     )
                     .toList(),
-                onChanged: (value) {
-                  setState(() {
-                    if (value != null) {
-                      _config.accentBeat = value;
-                    }
-                  });
-                },
+                onSelected: (_) => print("Preset changed!"),
+                expandedInsets: EdgeInsets.zero,
               ),
-            ],
-          ),
+            ),
+            const Space.sm(),
+            IconButton(
+              icon: const Icon(Icons.add_rounded),
+              onPressed: _showSavePresetDialog,
+            ),
+          ],
+        ),
 
-          const SizedBox(height: 32),
+        const Space.lg(),
 
-          // Control Buttons
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton.icon(
-                onPressed: _handleTapTempo,
-                icon: const Icon(Icons.tap_and_play),
-                label: const Text("Tap Tempo"),
-              ),
-              const SizedBox(width: 16),
-              ElevatedButton(
-                onPressed: _toggleMetronome,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: _isRunning ? Colors.red : Colors.green,
-                  foregroundColor: Colors.white,
-                ),
-                child: Text(_isRunning ? "STOP" : "START"),
-              ),
-            ],
+        const Text("Sound"),
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: DropdownMenu(
+            initialSelection: "Qux",
+            dropdownMenuEntries: ["Baz", "Qux"]
+                .map((sound) => DropdownMenuEntry(value: sound, label: sound))
+                .toList(),
+            onSelected: (_) => print("Sound changed!"),
+            expandedInsets: EdgeInsets.zero,
           ),
-        ],
-      ),
+        ),
+
+        const Space.sm(),
+
+        const Text("Accent Beat"),
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            runAlignment: WrapAlignment.center,
+
+            spacing: 8,
+            runSpacing: 8,
+            children: [0, 1, 2, 3, 4, 6, 8, 12, 16]
+                .map(
+                  (beat) => FilterChip(
+                    label: Text(
+                      beat == 0
+                          ? "No accent"
+                          : "Every $beat${{1: "st", 2: "nd", 3: "rd"}[beat] ?? "th"}",
+                    ),
+                    selected: beat == _config.accentBeat,
+                    onSelected: (_) => _updateAccentBeat(beat),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+
+        const Space.lg(),
+
+        Row(
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children:
+                  [
+                        (label: "-1", val: _config.bpm - 1),
+                        (label: "½x", val: _config.bpm ~/ 2),
+                      ]
+                      .map(
+                        (t) => TextButton(
+                          onPressed: t.val < MetronomeConfig.bpmMin
+                              ? null
+                              : () => _updateBpm(t.val),
+                          child: Text(t.label),
+                        ),
+                      )
+                      .toList(),
+            ),
+
+            Expanded(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  MyCircularSlider(
+                    value: _config.bpm.toDouble(),
+                    min: MetronomeConfig.bpmMin.toDouble(),
+                    max: MetronomeConfig.bpmMax.toDouble(),
+                    divisions: MetronomeConfig.bpmMax - MetronomeConfig.bpmMin,
+                    onChanged: (val) => _updateBpm(val.floor()),
+                  ),
+                  IconButton(
+                    onPressed: _handleTapTempo,
+                    icon: SizedBox.square(
+                      dimension: 140,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _config.bpm.toString(),
+                            style: const TextStyle(
+                              fontSize: 42,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          const Text("BPM", style: TextStyle(fontSize: 22)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children:
+                  [
+                        (label: "+1", val: _config.bpm + 1),
+                        (label: "2x", val: _config.bpm * 2),
+                      ]
+                      .map(
+                        (t) => TextButton(
+                          onPressed: t.val > MetronomeConfig.bpmMax
+                              ? null
+                              : () => _updateBpm(t.val),
+                          child: Text(t.label),
+                        ),
+                      )
+                      .toList(),
+            ),
+          ],
+        ),
+      ],
     ),
   );
 

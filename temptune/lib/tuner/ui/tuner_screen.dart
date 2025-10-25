@@ -56,13 +56,13 @@ class _TunerScreenState extends State<TunerScreen> {
       child: Icon(_isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded),
     ),
     body: ListView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       children: [
         const Text("Waveform Type"),
         Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(8),
           child: Wrap(
-            alignment: WrapAlignment.spaceBetween,
+            alignment: WrapAlignment.center,
             runAlignment: WrapAlignment.center,
 
             spacing: 8,
@@ -77,7 +77,7 @@ class _TunerScreenState extends State<TunerScreen> {
                     .map(
                       (type) => FilterChip(
                         label: Text(type.name),
-                        selected: _config.waveType == type,
+                        selected: type == _config.waveType,
                         onSelected: (_) => _updateWaveform(type),
                       ),
                     )
@@ -89,7 +89,7 @@ class _TunerScreenState extends State<TunerScreen> {
 
         const Text("Volume"),
         Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(8),
           child: Slider(
             value: _config.volume,
             min: 0.1,
@@ -106,7 +106,6 @@ class _TunerScreenState extends State<TunerScreen> {
         Row(
           children: [
             Column(
-              mainAxisSize: MainAxisSize.min,
               children: [_config.note().prev(), _config.note().prevOctave()]
                   .map(
                     (note) => TextButton(
@@ -123,6 +122,14 @@ class _TunerScreenState extends State<TunerScreen> {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
+                  MyCircularSlider(
+                    value: log(_config.freq),
+                    min: log(TunerConfig.freqMin),
+                    max: log(TunerConfig.freqMax),
+                    divisions: 12 * 6,
+                    onChanged: (val) =>
+                        _updateFrequency(pow(e, val).toDouble()),
+                  ),
                   Column(
                     children: [
                       NoteWidget(
@@ -141,20 +148,11 @@ class _TunerScreenState extends State<TunerScreen> {
                       const Text("Hz", style: TextStyle(fontSize: 22)),
                     ],
                   ),
-                  MyCircularSlider(
-                    value: log(_config.freq),
-                    min: log(TunerConfig.freqMin),
-                    max: log(TunerConfig.freqMax),
-                    divisions: 12 * 6,
-                    onChanged: (val) =>
-                        _updateFrequency(pow(e, val).toDouble()),
-                  ),
                 ],
               ),
             ),
 
             Column(
-              mainAxisSize: MainAxisSize.min,
               children: [_config.note().next(), _config.note().nextOctave()]
                   .map(
                     (note) => TextButton(
