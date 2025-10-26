@@ -17,6 +17,7 @@ class MetronomeScreen extends StatefulWidget {
 class _MetronomeScreenState extends State<MetronomeScreen> {
   late final _soundService = context.read<SoundService>();
   late final _presetUsecases = context.read<PresetUsecases<MetronomeConfig>>();
+  final _presetNameController = TextEditingController();
 
   var config = MetronomeConfig();
 
@@ -95,35 +96,30 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
     );
   }
 
-  Future<Preset<MetronomeConfig>?> _showPresetNameDialog() async {
-    final controller = TextEditingController();
-    final createdPreset = await showDialog<Preset<MetronomeConfig>>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("New Preset"),
-        content: TextField(
-          controller: controller,
-          decoration: const InputDecoration(labelText: "Name"),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("Cancel"),
+  Future<Preset<MetronomeConfig>?> _showPresetNameDialog() async =>
+      showDialog<Preset<MetronomeConfig>>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("New Preset"),
+          content: TextField(
+            controller: _presetNameController,
+            decoration: const InputDecoration(labelText: "Name"),
           ),
-          TextButton(
-            onPressed: () => Navigator.pop(
-              context,
-              Preset(name: controller.text, val: config),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel"),
             ),
-            child: const Text("OK"),
-          ),
-        ],
-      ),
-    );
-    controller.dispose();
-
-    return createdPreset;
-  }
+            TextButton(
+              onPressed: () => Navigator.pop(
+                context,
+                Preset(name: _presetNameController.text, val: config),
+              ),
+              child: const Text("OK"),
+            ),
+          ],
+        ),
+      );
 
   @override
   void initState() {
@@ -135,6 +131,13 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
       }),
     );
     _soundService.updateMetronomeConfig(config);
+  }
+
+  @override
+  void dispose() {
+    _presetNameController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -152,6 +155,7 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
           children: [
             Expanded(
               child: DropdownMenu(
+                controller: _presetNameController,
                 initialSelection: currentPreset,
                 dropdownMenuEntries: presets
                     .map(
