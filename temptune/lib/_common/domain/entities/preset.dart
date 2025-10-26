@@ -5,8 +5,6 @@ class Preset<T> {
   String name;
   T val;
 
-  Preset<T> withId(int id) => Preset<T>(id: id, name: name, val: val);
-
   @override
   bool operator ==(Object other) =>
       other is Preset<T> && id != null && other.id == id;

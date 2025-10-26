@@ -25,3 +25,4 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/metronome/sounds/click.wav

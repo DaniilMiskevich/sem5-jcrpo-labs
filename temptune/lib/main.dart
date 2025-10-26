@@ -2,19 +2,30 @@ import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:temptune/_common/data/repo_impls/bin_file_storage_repo_impl.dart";
 import "package:temptune/_common/data/repo_impls/text_file_storage_repo_impl.dart";
-import "package:temptune/_common/domain/entities/preset.dart";
 import "package:temptune/_common/domain/usecases/preset_usecases.dart";
 import "package:temptune/_common/service/sound_service.dart";
 import "package:temptune/_common/ui/main_screen.dart";
+import "package:temptune/metronome/data/repo_impls/builtin_metronome_sound_storage_repo_impl.dart";
+import "package:temptune/metronome/data/repo_impls/custom_metronome_sound_file_storage_repo_impl.dart";
 import "package:temptune/metronome/data/repo_impls/metronome_preset_file_storage_repo_impl.dart";
-import "package:temptune/metronome/data/repo_impls/metronome_sound_file_storage_repo_impl.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
+import "package:temptune/metronome/domain/entities/metronome_sound.dart";
 import "package:temptune/metronome/domain/usecases/metronome_sound_usecases.dart";
 
 final metronomePresetStorage = MetronomePresetFileStorageRepoImpl(
   TextFileStorageRepoImpl("userdata/metronome/presets/"),
 );
-final customMetronomeSoundStorage = MetronomeSoundFileStorageRepoImpl(
+final builtinMetronomeSoundsStorage = BuiltinMetronomeSoundStorageRepoImpl([
+  BuiltinMetronomeSoundMeta(
+    name: "Click",
+    assetPath: "assets/metronome/sounds/click.wav",
+  ),
+  BuiltinMetronomeSoundMeta(
+    name: "8-bit",
+    assetPath: "assets/metronome/sounds/8_bit.wav",
+  ),
+]);
+final customMetronomeSoundStorage = CustomMetronomeSoundFileStorageRepoImpl(
   BinFileStorageRepoImpl("userdata/metronome/sounds/data/"),
   TextFileStorageRepoImpl("userdata/metronome/sounds/meta/"),
 );
@@ -23,7 +34,7 @@ final metronomePresetUsecases = PresetUsecases<MetronomeConfig>(
   metronomePresetStorage,
 );
 final metronomeSoundUsecases = MetronomeSoundUsecases(
-  {},
+  builtinMetronomeSoundsStorage,
   customMetronomeSoundStorage,
 );
 
@@ -31,6 +42,8 @@ final soundService = SoundService(metronomeSoundUsecases);
 
 void main() async {
   await soundService.init();
+
+  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const MyApp());
 }

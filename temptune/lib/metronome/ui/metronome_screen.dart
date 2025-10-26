@@ -5,6 +5,8 @@ import "package:temptune/_common/domain/usecases/preset_usecases.dart";
 import "package:temptune/_common/service/sound_service.dart";
 import "package:temptune/_common/ui/widgets/space.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
+import "package:temptune/metronome/domain/entities/metronome_sound.dart";
+import "package:temptune/metronome/domain/usecases/metronome_sound_usecases.dart";
 import "package:temptune/tuner/ui/widgets/my_circular_slider.dart";
 
 class MetronomeScreen extends StatefulWidget {
@@ -17,20 +19,25 @@ class MetronomeScreen extends StatefulWidget {
 class _MetronomeScreenState extends State<MetronomeScreen> {
   late final _soundService = context.read<SoundService>();
   late final _presetUsecases = context.read<PresetUsecases<MetronomeConfig>>();
-  final _presetNameController = TextEditingController();
+  late final _soundUsecases = context.read<MetronomeSoundUsecases>();
+  final presetNameController = TextEditingController();
 
   var config = MetronomeConfig();
 
-  var presets = <Preset<MetronomeConfig>?>{null};
+  var presets = <Preset<MetronomeConfig>>{};
   Preset<MetronomeConfig>? currentPreset;
-  Future<Set<Preset<MetronomeConfig>?>> _loadPresets() => _presetUsecases
+  Future<Set<Preset<MetronomeConfig>>> _loadPresets() => _presetUsecases
       .list()
-      .then(
-        (presetIds) =>
-            presetIds.map((presetId) => _presetUsecases.load(presetId)),
-      )
+      .then((ids) => ids.map((id) => _presetUsecases.load(id)))
       .then(Future.wait)
-      .then((presets) => presets.toSet()..add(null));
+      .then((presets) => presets.whereType<Preset<MetronomeConfig>>().toSet());
+
+  var sounds = <MetronomeSoundMeta>{};
+  Future<Set<MetronomeSoundMeta>> _loadSounds() => _soundUsecases
+      .list()
+      .then((ids) => ids.map((id) => _soundUsecases.load(id)))
+      .then(Future.wait)
+      .then((sounds) => sounds.whereType<MetronomeSoundMeta>().toSet());
 
   var isRunning = false;
   void _toggleMetronome() => setState(() {
@@ -46,12 +53,14 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
     config.bpm = val;
     _soundService.updateMetronomeConfig(config);
   });
-
   void _updateAccentBeat(int val) => setState(() {
     config.accentBeat = val;
     _soundService.updateMetronomeConfig(config);
   });
-
+  void _updateSoundId(int? val) => setState(() {
+    config.soundId = val;
+    _soundService.updateMetronomeConfig(config);
+  });
   void _updateConfig(MetronomeConfig val) => setState(() {
     config = val;
     _soundService.updateMetronomeConfig(config);
@@ -61,83 +70,48 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
   final List<DateTime> taps = [];
   void _handleTapTempo() {
     final now = DateTime.now();
-    setState(() {
-      if (lastTap != null) {
-        taps.add(now);
-        if (taps.length > 4) {
-          taps.removeAt(0);
-        }
-
-        if (taps.length >= 2) {
-          final intervals = <int>[];
-          for (var i = 1; i < taps.length; i++) {
-            intervals.add(taps[i].difference(taps[i - 1]).inMilliseconds);
-          }
-          final averageInterval =
-              intervals.reduce((a, b) => a + b) ~/ intervals.length;
-          _updateBpm(60000 ~/ averageInterval);
-        }
+    if (lastTap != null) {
+      taps.add(now);
+      if (taps.length > 4) {
+        taps.removeAt(0);
       }
-      lastTap = now;
-    });
+
+      if (taps.length >= 2) {
+        final intervals = <int>[];
+        for (var i = 1; i < taps.length; i++) {
+          intervals.add(taps[i].difference(taps[i - 1]).inMilliseconds);
+        }
+        final averageInterval =
+            intervals.reduce((a, b) => a + b) ~/ intervals.length;
+        _updateBpm(60000 ~/ averageInterval);
+      }
+    }
+    lastTap = now;
   }
 
   Future<void> _savePreset(Preset<MetronomeConfig> preset) async {
+    preset.name = presetNameController.text;
     // ignore: parameter_assignments
     preset = await _presetUsecases.save(preset);
 
-    setState(() {
-      currentPreset = preset;
-    });
-    await _loadPresets().then(
-      (loadedPresets) => setState(() {
-        presets = loadedPresets;
-      }),
-    );
-  }
+    currentPreset = preset;
+    await _loadPresets().then((loadedPresets) => presets = loadedPresets);
 
-  Future<Preset<MetronomeConfig>?> _showPresetNameDialog() async =>
-      showDialog<Preset<MetronomeConfig>>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text("New Preset"),
-          content: TextField(
-            controller: _presetNameController,
-            decoration: const InputDecoration(labelText: "Name"),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Cancel"),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(
-                context,
-                Preset(name: _presetNameController.text, val: config),
-              ),
-              child: const Text("OK"),
-            ),
-          ],
-        ),
-      );
+    setState(() {});
+  }
 
   @override
   void initState() {
     super.initState();
 
-    _loadPresets().then(
-      (loadedPresets) => setState(() {
-        presets = loadedPresets;
-      }),
-    );
+    () async {
+      await _loadPresets().then((loadedPresets) => presets = loadedPresets);
+      await _loadSounds().then((loadedSounds) => sounds = loadedSounds);
+
+      setState(() {});
+    }();
+
     _soundService.updateMetronomeConfig(config);
-  }
-
-  @override
-  void dispose() {
-    _presetNameController.dispose();
-
-    super.dispose();
   }
 
   @override
@@ -155,34 +129,37 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
           children: [
             Expanded(
               child: DropdownMenu(
-                controller: _presetNameController,
+                controller: presetNameController,
                 initialSelection: currentPreset,
-                dropdownMenuEntries: presets
-                    .map(
-                      (preset) => DropdownMenuEntry(
-                        value: preset,
-                        label: preset?.name ?? "New Preset",
-                        leadingIcon: preset == null
-                            ? const Icon(Icons.add_rounded)
-                            : null,
+                dropdownMenuEntries:
+                    presets
+                        .map(
+                          (preset) =>
+                              DropdownMenuEntry<Preset<MetronomeConfig>?>(
+                                value: preset,
+                                label: preset.name,
+                              ),
+                        )
+                        .toList()
+                      ..add(
+                        const DropdownMenuEntry<Preset<MetronomeConfig>?>(
+                          value: null,
+                          label: "New Preset\u200B",
+                          leadingIcon: Icon(Icons.add_rounded),
+                        ),
                       ),
-                    )
-                    .toList(),
-                onSelected: (preset) => setState(() {
+                onSelected: (preset) {
                   currentPreset = preset;
                   if (preset != null) _updateConfig(preset.val);
-                }),
+                },
                 expandedInsets: EdgeInsets.zero,
               ),
             ),
             const Space.sm(),
             IconButton(
               icon: const Icon(Icons.save_rounded),
-              onPressed: () async {
-                final preset = currentPreset ?? await _showPresetNameDialog();
-                if (preset == null) return;
-                return _savePreset(preset);
-              },
+              onPressed: () =>
+                  _savePreset(currentPreset ?? Preset(name: "", val: config)),
             ),
           ],
         ),
@@ -192,12 +169,17 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
         const Text("Sound"),
         Padding(
           padding: const EdgeInsets.all(8),
-          child: DropdownMenu(
-            initialSelection: "Qux",
-            dropdownMenuEntries: ["Baz", "Qux"]
-                .map((sound) => DropdownMenuEntry(value: sound, label: sound))
-                .toList(),
-            onSelected: (_) => print("Sound changed!"),
+          child: DropdownMenu<int?>(
+            initialSelection: config.soundId,
+            dropdownMenuEntries:
+                sounds
+                    .map(
+                      (sound) =>
+                          DropdownMenuEntry(value: sound.id, label: sound.name),
+                    )
+                    .toList()
+                  ..add(const DropdownMenuEntry(value: null, label: "Default")),
+            onSelected: _updateSoundId,
             expandedInsets: EdgeInsets.zero,
           ),
         ),

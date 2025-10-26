@@ -2,33 +2,38 @@ import "package:temptune/_common/domain/repos/storage_repo.dart";
 import "package:temptune/metronome/domain/entities/metronome_sound.dart";
 
 final class MetronomeSoundUsecases {
-  MetronomeSoundUsecases(this._builtin, this._customStorage);
+  MetronomeSoundUsecases(this._builtinStorage, this._customStorage);
 
-  final Map<int, MetronomeSound> _builtin;
-  final StorageRepo<int, MetronomeSound> _customStorage;
+  final ROStorageRepo<int, BuiltinMetronomeSoundMeta> _builtinStorage;
+  final StorageRepo<int, CustomMetronomeSoundMeta> _customStorage;
 
-  Future<MetronomeSound?> load(int id) async =>
-      await _customStorage.load(id) ?? _builtin[id];
+  Future<MetronomeSoundMeta?> load(int id) async =>
+      await _customStorage.load(id) ?? await _builtinStorage.load(id);
 
-  Future<Iterable<int>> list() async => [
-    ..._builtin.keys,
+  Future<Iterable<int>> list() async => {
     ...await _customStorage.list(),
-  ];
+    ...await _builtinStorage.list(),
+  };
 
-  Future<void> save(MetronomeSound sound) async {
-    if (sound.isProtected) throw Exception("Cannot modify protected sounds.");
+  Future<void> save(MetronomeSoundMeta sound) async {
+    if (sound is! CustomMetronomeSoundMeta) return;
+
     await _customStorage.save(
       sound.id ?? DateTime.now().millisecondsSinceEpoch,
       sound,
     );
   }
 
-  Future<void> delete(MetronomeSound sound) async {
-    if (sound.isProtected) throw Exception("Cannot delete protected sounds.");
+  Future<void> delete(MetronomeSoundMeta sound) async {
+    if (sound is! CustomMetronomeSoundMeta) return;
 
     if (sound.id == null) return;
     await _customStorage.delete(sound.id!);
   }
 
-  Future<MetronomeSound> fallback() => Future.value(_builtin.values.first);
+  late Future<MetronomeSoundMeta> fallback = () async {
+    final firstId = await _builtinStorage.list().then((ids) => ids.first);
+    final fallbackSound = (await _builtinStorage.load(firstId))!;
+    return fallbackSound;
+  }();
 }

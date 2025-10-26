@@ -5,21 +5,24 @@ import "package:temptune/_common/data/repo_impls/text_file_storage_repo_impl.dar
 import "package:temptune/_common/domain/repos/storage_repo.dart";
 import "package:temptune/metronome/domain/entities/metronome_sound.dart";
 
-class MetronomeSoundFileStorageRepoImpl
-    implements StorageRepo<int, MetronomeSound> {
-  MetronomeSoundFileStorageRepoImpl(this._binFileStorage, this._fileStorage);
+class CustomMetronomeSoundFileStorageRepoImpl
+    implements StorageRepo<int, CustomMetronomeSoundMeta> {
+  CustomMetronomeSoundFileStorageRepoImpl(
+    this._binFileStorage,
+    this._fileStorage,
+  );
 
   final BinFileStorageRepoImpl _binFileStorage;
   final TextFileStorageRepoImpl _fileStorage;
 
   @override
-  Future<MetronomeSound?> load(int id) async {
+  Future<CustomMetronomeSoundMeta?> load(int id) async {
     final meta = await _fileStorage.load(id.toString());
     final data = await _binFileStorage.load(id.toString());
     if (meta == null || data == null) return null;
 
     final {"name": String name} = jsonDecode(meta) as Map;
-    return MetronomeSound(id: id, name: name, data: data);
+    return CustomMetronomeSoundMeta(id: id, name: name, data: data);
   }
 
   @override
@@ -33,7 +36,7 @@ class MetronomeSoundFileStorageRepoImpl
   }
 
   @override
-  Future<void> save(int id, MetronomeSound val) async {
+  Future<void> save(int id, CustomMetronomeSoundMeta val) async {
     await _fileStorage.save(id.toString(), jsonEncode({"name": val.name}));
     await _binFileStorage.save(id.toString(), val.data);
   }

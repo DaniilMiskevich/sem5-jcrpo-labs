@@ -11,10 +11,12 @@ final class PresetUsecases<T> {
   Future<Iterable<int>> list() => _storage.list();
 
   Future<Preset<T>> save(Preset<T> preset) async {
-    if (preset.id == null) {
-      // ignore: parameter_assignments
-      preset = preset.withId(DateTime.now().millisecondsSinceEpoch);
-    }
+    // ignore: parameter_assignments
+    preset = Preset(
+      id: preset.id ?? DateTime.now().millisecondsSinceEpoch,
+      name: preset.name,
+      val: preset.val,
+    );
 
     await _storage.save(preset.id!, preset);
     return preset;

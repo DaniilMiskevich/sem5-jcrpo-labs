@@ -1,26 +1,33 @@
-import "package:flutter/services.dart";
+import "dart:typed_data";
 
-final class MetronomeSound {
-  MetronomeSound({
-    this.id,
-    required this.name,
-    required this.data,
-    this.isProtected = false,
-  });
+enum MetronomeSoundType { builtin, custom }
 
-  static Future<MetronomeSound> fromAsset({
-    int? id,
-    required String name,
-    required String assetPath,
-    bool isProtected = true,
-  }) async => MetronomeSound(
-    id: id,
-    name: name,
-    data: Uint8List.sublistView(await rootBundle.load(assetPath)),
-  );
+sealed class MetronomeSoundMeta {
+  MetronomeSoundMeta({this.id, required this.name});
 
   final int? id;
   String name;
-  Uint8List data;
-  final bool isProtected;
+
+  @override
+  bool operator ==(Object other) =>
+      other is MetronomeSoundMeta && id != null && other.id == id;
+
+  @override
+  int get hashCode => Object.hash(id ?? super.hashCode, null);
+}
+
+final class BuiltinMetronomeSoundMeta extends MetronomeSoundMeta {
+  BuiltinMetronomeSoundMeta({
+    super.id,
+    required super.name,
+    required this.assetPath,
+  });
+
+  final String assetPath;
+}
+
+final class CustomMetronomeSoundMeta extends MetronomeSoundMeta {
+  CustomMetronomeSoundMeta({super.id, required super.name, required this.data});
+
+  final Uint8List data;
 }

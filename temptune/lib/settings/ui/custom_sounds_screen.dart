@@ -11,7 +11,7 @@ class CustomSoundsScreen extends StatefulWidget {
 }
 
 class _CustomSoundsScreenState extends State<CustomSoundsScreen> {
-  final List<MetronomeSound> _customSounds = [];
+  final List<MetronomeSoundMeta> _customSounds = [];
 
   Future<void> _importSound() async => showDialog(
     context: context,
@@ -26,7 +26,7 @@ class _CustomSoundsScreenState extends State<CustomSoundsScreen> {
         TextButton(
           onPressed: () {
             // Mock import - in real app, this would handle file selection
-            final newSound = MetronomeSound(
+            final newSound = CustomMetronomeSoundMeta(
               id: DateTime.now().millisecondsSinceEpoch,
               name: "Custom Sound ${_customSounds.length + 1}",
               data: Uint8List(0), // Would be actual audio data
@@ -42,8 +42,8 @@ class _CustomSoundsScreenState extends State<CustomSoundsScreen> {
     ),
   );
 
-  void _editSound(MetronomeSound sound) {
-    if (sound.isProtected) {
+  void _editSound(CustomMetronomeSoundMeta sound) {
+    if (sound is BuiltinMetronomeSoundMeta) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Built-in sounds cannot be edited")),
       );
@@ -66,8 +66,8 @@ class _CustomSoundsScreenState extends State<CustomSoundsScreen> {
     );
   }
 
-  void _deleteSound(MetronomeSound sound) {
-    if (sound.isProtected) {
+  void _deleteSound(MetronomeSoundMeta sound) {
+    if (sound is BuiltinMetronomeSoundMeta) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Built-in sounds cannot be deleted")),
       );
@@ -125,18 +125,18 @@ class _CustomSoundsScreenState extends State<CustomSoundsScreen> {
     ),
   );
 
-  Widget _buildSoundCard(MetronomeSound sound) => Card(
+  Widget _buildSoundCard(MetronomeSoundMeta sound) => Card(
     margin: const EdgeInsets.only(bottom: 8),
     child: ListTile(
       leading: const Icon(Icons.audio_file),
       title: Text(sound.name),
-      subtitle: sound.isProtected
+      subtitle: sound is BuiltinMetronomeSoundMeta
           ? const Text("Built-in")
           : const Text("Custom"),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (!sound.isProtected)
+          if (sound is CustomMetronomeSoundMeta)
             IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () => _editSound(sound),
@@ -157,8 +157,8 @@ class _CustomSoundsScreenState extends State<CustomSoundsScreen> {
 class SoundEditDialog extends StatefulWidget {
   const SoundEditDialog({super.key, required this.sound, required this.onSave});
 
-  final MetronomeSound sound;
-  final void Function(MetronomeSound) onSave;
+  final CustomMetronomeSoundMeta sound;
+  final void Function(MetronomeSoundMeta) onSave;
 
   @override
   State<SoundEditDialog> createState() => _SoundEditDialogState();
@@ -203,11 +203,10 @@ class _SoundEditDialogState extends State<SoundEditDialog> {
       ),
       TextButton(
         onPressed: () {
-          final updatedSound = MetronomeSound(
+          final updatedSound = CustomMetronomeSoundMeta(
             id: widget.sound.id,
             name: _nameController.text,
             data: widget.sound.data,
-            isProtected: widget.sound.isProtected,
           );
           widget.onSave(updatedSound);
           Navigator.pop(context);
