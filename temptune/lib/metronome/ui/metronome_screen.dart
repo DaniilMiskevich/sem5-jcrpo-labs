@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+import "package:temptune/_common/domain/entities/preset.dart";
+import "package:temptune/_common/domain/usecases/preset_usecases.dart";
 import "package:temptune/_common/service/sound_service.dart";
 import "package:temptune/_common/ui/widgets/space.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
@@ -13,53 +15,126 @@ class MetronomeScreen extends StatefulWidget {
 }
 
 class _MetronomeScreenState extends State<MetronomeScreen> {
-  final _config = MetronomeConfig();
-  bool _isRunning = false;
-  DateTime? _lastTap;
-  final List<DateTime> _taps = [];
-
   late final _soundService = context.read<SoundService>();
+  late final _presetUsecases = context.read<PresetUsecases<MetronomeConfig>>();
 
+  var config = MetronomeConfig();
+
+  var presets = <Preset<MetronomeConfig>?>{null};
+  Preset<MetronomeConfig>? currentPreset;
+  Future<Set<Preset<MetronomeConfig>?>> _loadPresets() => _presetUsecases
+      .list()
+      .then(
+        (presetIds) =>
+            presetIds.map((presetId) => _presetUsecases.load(presetId)),
+      )
+      .then(Future.wait)
+      .then((presets) => presets.toSet()..add(null));
+
+  var isRunning = false;
   void _toggleMetronome() => setState(() {
-    if (_isRunning) {
+    if (isRunning) {
       _soundService.stopMetronome();
     } else {
-      _soundService.startMetronome(_config);
+      _soundService.startMetronome();
     }
-    _isRunning = !_isRunning;
+    isRunning = !isRunning;
   });
 
-  void _updateBpm(int bpm) => setState(() {
-    _config.bpm = bpm;
-    // TODO apply dynamically
+  void _updateBpm(int val) => setState(() {
+    config.bpm = val;
+    _soundService.updateMetronomeConfig(config);
   });
 
-  void _updateAccentBeat(int accentBeat) => setState(() {
-    _config.accentBeat = accentBeat;
-    // TODO apply dynamically
+  void _updateAccentBeat(int val) => setState(() {
+    config.accentBeat = val;
+    _soundService.updateMetronomeConfig(config);
   });
 
+  void _updateConfig(MetronomeConfig val) => setState(() {
+    config = val;
+    _soundService.updateMetronomeConfig(config);
+  });
+
+  DateTime? lastTap;
+  final List<DateTime> taps = [];
   void _handleTapTempo() {
     final now = DateTime.now();
     setState(() {
-      if (_lastTap != null) {
-        _taps.add(now);
-        if (_taps.length > 4) {
-          _taps.removeAt(0);
+      if (lastTap != null) {
+        taps.add(now);
+        if (taps.length > 4) {
+          taps.removeAt(0);
         }
 
-        if (_taps.length >= 2) {
+        if (taps.length >= 2) {
           final intervals = <int>[];
-          for (var i = 1; i < _taps.length; i++) {
-            intervals.add(_taps[i].difference(_taps[i - 1]).inMilliseconds);
+          for (var i = 1; i < taps.length; i++) {
+            intervals.add(taps[i].difference(taps[i - 1]).inMilliseconds);
           }
           final averageInterval =
               intervals.reduce((a, b) => a + b) ~/ intervals.length;
-          _config.bpm = (60000 ~/ averageInterval).clamp(30, 250);
+          _updateBpm(60000 ~/ averageInterval);
         }
       }
-      _lastTap = now;
+      lastTap = now;
     });
+  }
+
+  Future<void> _savePreset(Preset<MetronomeConfig> preset) async {
+    // ignore: parameter_assignments
+    preset = await _presetUsecases.save(preset);
+
+    setState(() {
+      currentPreset = preset;
+    });
+    await _loadPresets().then(
+      (loadedPresets) => setState(() {
+        presets = loadedPresets;
+      }),
+    );
+  }
+
+  Future<Preset<MetronomeConfig>?> _showPresetNameDialog() async {
+    final controller = TextEditingController();
+    final createdPreset = await showDialog<Preset<MetronomeConfig>>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("New Preset"),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(labelText: "Name"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(
+              context,
+              Preset(name: controller.text, val: config),
+            ),
+            child: const Text("OK"),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+
+    return createdPreset;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _loadPresets().then(
+      (loadedPresets) => setState(() {
+        presets = loadedPresets;
+      }),
+    );
+    _soundService.updateMetronomeConfig(config);
   }
 
   @override
@@ -67,7 +142,7 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
     appBar: AppBar(title: const Text("Metronome")),
     floatingActionButton: FloatingActionButton(
       onPressed: _toggleMetronome,
-      child: Icon(_isRunning ? Icons.stop_rounded : Icons.play_arrow_rounded),
+      child: Icon(isRunning ? Icons.stop_rounded : Icons.play_arrow_rounded),
     ),
     body: ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
@@ -77,21 +152,33 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
           children: [
             Expanded(
               child: DropdownMenu(
-                initialSelection: "Foo",
-                dropdownMenuEntries: ["Foo", "Bar"]
+                initialSelection: currentPreset,
+                dropdownMenuEntries: presets
                     .map(
-                      (preset) =>
-                          DropdownMenuEntry(value: preset, label: preset),
+                      (preset) => DropdownMenuEntry(
+                        value: preset,
+                        label: preset?.name ?? "New Preset",
+                        leadingIcon: preset == null
+                            ? const Icon(Icons.add_rounded)
+                            : null,
+                      ),
                     )
                     .toList(),
-                onSelected: (_) => print("Preset changed!"),
+                onSelected: (preset) => setState(() {
+                  currentPreset = preset;
+                  if (preset != null) _updateConfig(preset.val);
+                }),
                 expandedInsets: EdgeInsets.zero,
               ),
             ),
             const Space.sm(),
             IconButton(
-              icon: const Icon(Icons.add_rounded),
-              onPressed: _showSavePresetDialog,
+              icon: const Icon(Icons.save_rounded),
+              onPressed: () async {
+                final preset = currentPreset ?? await _showPresetNameDialog();
+                if (preset == null) return;
+                return _savePreset(preset);
+              },
             ),
           ],
         ),
@@ -128,9 +215,9 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
                     label: Text(
                       beat == 0
                           ? "No accent"
-                          : "Every $beat${{1: "st", 2: "nd", 3: "rd"}[beat] ?? "th"}",
+                          : "Every $beat ${beat > 1 ? "beats" : "beat"}",
                     ),
-                    selected: beat == _config.accentBeat,
+                    selected: beat == config.accentBeat,
                     onSelected: (_) => _updateAccentBeat(beat),
                   ),
                 )
@@ -146,8 +233,8 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
               mainAxisSize: MainAxisSize.min,
               children:
                   [
-                        (label: "-1", val: _config.bpm - 1),
-                        (label: "½x", val: _config.bpm ~/ 2),
+                        (label: "-1", val: config.bpm - 1),
+                        (label: "½x", val: config.bpm ~/ 2),
                       ]
                       .map(
                         (t) => TextButton(
@@ -165,7 +252,7 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
                 alignment: Alignment.center,
                 children: [
                   MyCircularSlider(
-                    value: _config.bpm.toDouble(),
+                    value: config.bpm.toDouble(),
                     min: MetronomeConfig.bpmMin.toDouble(),
                     max: MetronomeConfig.bpmMax.toDouble(),
                     divisions: MetronomeConfig.bpmMax - MetronomeConfig.bpmMin,
@@ -179,7 +266,7 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            _config.bpm.toString(),
+                            config.bpm.toString(),
                             style: const TextStyle(
                               fontSize: 42,
                               fontWeight: FontWeight.bold,
@@ -199,8 +286,8 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
               mainAxisSize: MainAxisSize.min,
               children:
                   [
-                        (label: "+1", val: _config.bpm + 1),
-                        (label: "2x", val: _config.bpm * 2),
+                        (label: "+1", val: config.bpm + 1),
+                        (label: "2x", val: config.bpm * 2),
                       ]
                       .map(
                         (t) => TextButton(
@@ -213,32 +300,6 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
                       .toList(),
             ),
           ],
-        ),
-      ],
-    ),
-  );
-
-  void _showSavePresetDialog() => showDialog<void>(
-    context: context,
-    builder: (context) => AlertDialog(
-      title: const Text("Save Preset"),
-      content: TextField(
-        decoration: const InputDecoration(hintText: "Preset name"),
-        onChanged: (value) {
-          // Handle preset name input
-        },
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text("Cancel"),
-        ),
-        TextButton(
-          onPressed: () {
-            // Save preset logic
-            Navigator.pop(context);
-          },
-          child: const Text("Save"),
         ),
       ],
     ),

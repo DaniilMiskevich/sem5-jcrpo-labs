@@ -20,16 +20,12 @@ class MetronomePresetFileStorageRepoImpl
       "name": String name,
       "bpm": int bpm,
       "accent_beat": int accentBeat,
-      "sound_id": int soundId,
+      "sound_id": int? soundId,
     } = jsonDecode(data) as Map;
     return Preset<MetronomeConfig>(
       id: id,
       name: name,
-      settings: MetronomeConfig(
-        bpm: bpm,
-        accentBeat: accentBeat,
-        soundId: soundId,
-      ),
+      val: MetronomeConfig(bpm: bpm, accentBeat: accentBeat, soundId: soundId),
     );
   }
 
@@ -49,9 +45,9 @@ class MetronomePresetFileStorageRepoImpl
         id.toString(),
         jsonEncode({
           "name": val.name,
-          "bpm": val.settings.bpm,
-          "accentBeat": val.settings.accentBeat,
-          "soundId": val.settings.soundId,
+          "bpm": val.val.bpm,
+          "accent_beat": val.val.accentBeat,
+          "sound_id": val.val.soundId,
         }),
       );
 
