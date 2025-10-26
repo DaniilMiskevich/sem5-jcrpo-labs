@@ -17,12 +17,12 @@ final metronomePresetStorage = MetronomePresetFileStorageRepoImpl(
 );
 final builtinMetronomeSoundsStorage = BuiltinMetronomeSoundStorageRepoImpl([
   BuiltinMetronomeSoundMeta(
-    name: "Click",
-    assetPath: "assets/metronome/sounds/click.wav",
-  ),
-  BuiltinMetronomeSoundMeta(
     name: "8-bit",
     assetPath: "assets/metronome/sounds/8_bit.wav",
+  ),
+  BuiltinMetronomeSoundMeta(
+    name: "Click",
+    assetPath: "assets/metronome/sounds/click.wav",
   ),
 ]);
 final customMetronomeSoundStorage = CustomMetronomeSoundFileStorageRepoImpl(

@@ -24,7 +24,14 @@ class _PresetsScreenState extends State<PresetsScreen> {
       .then(Future.wait)
       .then((presets) => presets.whereType<Preset<MetronomeConfig>>().toSet());
 
-  void _deletePreset(Preset<MetronomeConfig> preset) => showDialog<void>(
+  Future<void> _deletePreset(Preset<MetronomeConfig> preset) async {
+    await _presetUsecases.delete(preset);
+
+    await _loadPresets().then((loadedPresets) => presets = loadedPresets);
+    setState(() {});
+  }
+
+  void _showDeleteDialog(Preset<MetronomeConfig> preset) => showDialog<void>(
     context: context,
     builder: (context) => AlertDialog(
       title: const Text("Delete Preset"),
@@ -36,16 +43,9 @@ class _PresetsScreenState extends State<PresetsScreen> {
         ),
         TextButton(
           onPressed: () async {
-            await _presetUsecases.delete(preset);
+            await _deletePreset(preset);
             if (!context.mounted) return;
-
             Navigator.pop(context);
-
-            await _loadPresets().then(
-              (loadedPresets) => setState(() {
-                presets = loadedPresets;
-              }),
-            );
           },
           child: const Text("Delete"),
         ),
@@ -57,11 +57,10 @@ class _PresetsScreenState extends State<PresetsScreen> {
   void initState() {
     super.initState();
 
-    _loadPresets().then(
-      (loadedPresets) => setState(() {
-        presets = loadedPresets;
-      }),
-    );
+    () async {
+      await _loadPresets().then((loadedPresets) => presets = loadedPresets);
+      setState(() {});
+    }();
   }
 
   @override
@@ -89,7 +88,8 @@ class _PresetsScreenState extends State<PresetsScreen> {
                   subtitle: Text(
                     "${preset.val.bpm} BPM, Accent every ${preset.val.accentBeat} ${preset.val.accentBeat > 1 ? "beats" : "beat"}",
                   ),
-                  onLongPress: () => _deletePreset(preset),
+                  leading: const Icon(Icons.tune_rounded),
+                  onLongPress: () => _showDeleteDialog(preset),
                 ),
               );
             },

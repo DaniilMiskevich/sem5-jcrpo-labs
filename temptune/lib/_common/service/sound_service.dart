@@ -1,5 +1,6 @@
-import "package:minisound/engine.dart";
+import "package:minisound/engine_flutter.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
+import "package:temptune/metronome/domain/entities/metronome_sound.dart";
 import "package:temptune/metronome/domain/usecases/metronome_sound_usecases.dart";
 import "package:temptune/tuner/domain/entities/tuner_config.dart";
 
@@ -15,15 +16,27 @@ final class SoundService {
   LoadedSound? _metronomeSound;
 
   Future<void> updateMetronomeConfig(MetronomeConfig config) async {
-    // final metronomeSoundInfo = await storage.load(config.soundId!);
-    // if (metronomeSoundInfo == null) return;
-    // final metronomeSound = await _engine.loadSound(metronomeSoundInfo.data);
-    // _metronomeSound = metronomeSound;
+    final sound =
+        (config.soundId == null
+            ? null
+            : await metronomeSoundUsecases.load(config.soundId!)) ??
+        await metronomeSoundUsecases.fallback;
+
+    final metronomeSound = await switch (sound) {
+      BuiltinMetronomeSoundMeta(:final assetPath) => _engine.loadSoundAsset(
+        assetPath,
+      ),
+      CustomMetronomeSoundMeta(:final data) => _engine.loadSound(data),
+    };
+    metronomeSound.playLooped(
+      delay:
+          Duration(milliseconds: 60000 ~/ config.bpm) - metronomeSound.duration,
+    );
+    _metronomeSound?.stop();
+    _metronomeSound = metronomeSound;
   }
 
-  void startMetronome() {
-    if (_metronomeSound != null) return;
-  }
+  void startMetronome() {}
 
   void stopMetronome() {
     _metronomeSound?.stop();

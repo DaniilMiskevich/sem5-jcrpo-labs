@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:temptune/_common/ui/widgets/space.dart";
-import "package:temptune/settings/ui/custom_sounds_screen.dart";
 import "package:temptune/settings/ui/presets_screen.dart";
+import "package:temptune/settings/ui/sound_management_screen.dart";
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -19,9 +19,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     MaterialPageRoute<void>(builder: (_) => const PresetsScreen()),
   );
 
-  void _navigateToCustomSoundsScreen() => Navigator.push(
+  void _navigateToSoundManagementScreen() => Navigator.push(
     context,
-    MaterialPageRoute<void>(builder: (_) => const CustomSoundsScreen()),
+    MaterialPageRoute<void>(builder: (_) => const SoundManagementScreen()),
   );
 
   void _showAccountDialog() => showDialog<void>(
@@ -97,10 +97,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               const Divider(),
               ListTile(
-                title: const Text("Custom Sounds"),
+                title: const Text("Sound Management"),
                 leading: const Icon(Icons.audio_file_rounded),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: _navigateToCustomSoundsScreen,
+                onTap: _navigateToSoundManagementScreen,
               ),
             ],
           ),
