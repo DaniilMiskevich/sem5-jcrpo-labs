@@ -205,11 +205,7 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
             children: [0, 1, 2, 3, 4, 6, 8, 12, 16]
                 .map(
                   (beat) => FilterChip(
-                    label: Text(
-                      beat == 0
-                          ? "No accent"
-                          : "Every $beat ${beat > 1 ? "beats" : "beat"}",
-                    ),
+                    label: Text(beat == 0 ? "No accent" : "Every $beat"),
                     selected: beat == config.accentBeat,
                     onSelected: (_) => _updateAccentBeat(beat),
                   ),

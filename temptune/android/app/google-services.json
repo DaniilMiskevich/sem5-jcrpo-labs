@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "888519698255",
+    "project_id": "temp-tune",
+    "storage_bucket": "temp-tune.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888519698255:android:cfbf6ce24a22900aff873a",
+        "android_client_info": {
+          "package_name": "com.daniilmiskevich.temptune"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888519698255-vr0sa9u6b2sjfci29t8n1jfj3d902e8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHIrwic7kRs9ahxZslh4o2aYOefRTUUvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888519698255-vr0sa9u6b2sjfci29t8n1jfj3d902e8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

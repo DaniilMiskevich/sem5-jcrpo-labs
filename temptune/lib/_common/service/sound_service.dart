@@ -42,7 +42,7 @@ final class SoundService {
     _metronome?.timer.cancel();
     _metronome = (
       isPlaying: _metronome?.isPlaying ?? false,
-      timer: Timer.periodic(Duration(microseconds: 60000000 ~/ config.bpm), (
+      timer: Timer.periodic(Duration(microseconds: 60_000_000 ~/ config.bpm), (
         t,
       ) {
         if (!(_metronome?.isPlaying ?? false)) return;

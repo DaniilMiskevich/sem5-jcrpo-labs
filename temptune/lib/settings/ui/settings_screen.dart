@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
+import "package:provider/provider.dart";
 import "package:temptune/_common/ui/widgets/space.dart";
+import "package:temptune/auth/domain/entities/user.dart";
+import "package:temptune/auth/domain/usecases/auth_usecases.dart";
 import "package:temptune/settings/ui/presets_screen.dart";
 import "package:temptune/settings/ui/sound_management_screen.dart";
 
@@ -11,56 +14,99 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  String _username = "Guest";
-  String _email = "";
+  late final _authUsecases = context.read<AuthUsecases>();
 
-  void _navigateToPresetsScreen() => Navigator.push(
-    context,
-    MaterialPageRoute<void>(builder: (_) => const PresetsScreen()),
-  );
+  User? user;
 
-  void _navigateToSoundManagementScreen() => Navigator.push(
-    context,
-    MaterialPageRoute<void>(builder: (_) => const SoundManagementScreen()),
-  );
-
-  void _showAccountDialog() => showDialog<void>(
-    context: context,
-    builder: (context) => AlertDialog(
-      title: const Text("Account Settings"),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextField(
-            decoration: const InputDecoration(
-              labelText: "Username",
-              hintText: "Enter your username",
+  Future<void> _showLoginDialog() async {
+    final emailController = TextEditingController();
+    final passController = TextEditingController();
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Log In/Register"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(labelText: "E-mail"),
             ),
-            onChanged: (value) => setState(() => _username = value),
+            const Space.sm(),
+            TextField(
+              controller: passController,
+              decoration: const InputDecoration(labelText: "Password"),
+              obscureText: true,
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
           ),
-          const SizedBox(height: 16),
-          TextField(
-            decoration: const InputDecoration(
-              labelText: "Email",
-              hintText: "Enter your email",
-            ),
-            onChanged: (value) => setState(() => _email = value),
+          TextButton(
+            onPressed: () async {
+              final user = await _authUsecases.signIn(
+                emailController.text,
+                passController.text,
+              );
+              if (!context.mounted) return;
+
+              setState(() {
+                this.user = user;
+              });
+
+              Navigator.pop(context);
+            },
+            child: const Text("Save"),
           ),
         ],
       ),
+    );
+  }
+
+  void _showLogoutDialog() => showDialog<void>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text("Log Out"),
+      content: const Text("Are you sure you want to log out?"),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: const Text("Cancel"),
         ),
         TextButton(
-          onPressed: () {
-            // Save account settings
+          onPressed: () async {
+            await _authUsecases.signOut();
+            if (!context.mounted) return;
+
+            setState(() {
+              user = null;
+            });
+
             Navigator.pop(context);
           },
-          child: const Text("Save"),
+          child: const Text("Log Out"),
         ),
       ],
+    ),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+
+    user = _authUsecases.user;
+  }
+
+  Widget _buildSectionHeader(String title) => Padding(
+    padding: const EdgeInsets.only(bottom: 4.0),
+    child: Text(
+      title,
+      style: Theme.of(
+        context,
+      ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
     ),
   );
 
@@ -75,10 +121,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         Card(
           child: ListTile(
             leading: const Icon(Icons.person_rounded),
-            title: Text(_username),
-            subtitle: _email.isNotEmpty ? Text(_email) : null,
-            trailing: const Icon(Icons.chevron_right),
-            onTap: _showAccountDialog,
+            title: Text(user?.email ?? "Annonymous"),
+            onTap: user == null ? _showLoginDialog : _showLogoutDialog,
           ),
         ),
 
@@ -93,14 +137,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 title: const Text("Metronome Presets"),
                 leading: const Icon(Icons.save),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: _navigateToPresetsScreen,
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) => const PresetsScreen(),
+                  ),
+                ),
               ),
               const Divider(),
               ListTile(
                 title: const Text("Sound Management"),
                 leading: const Icon(Icons.audio_file_rounded),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: _navigateToSoundManagementScreen,
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) => const SoundManagementScreen(),
+                  ),
+                ),
               ),
             ],
           ),
@@ -114,16 +168,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: ListTile(title: Text("Version"), subtitle: Text("1.0.0")),
         ),
       ],
-    ),
-  );
-
-  Widget _buildSectionHeader(String title) => Padding(
-    padding: const EdgeInsets.only(bottom: 4.0),
-    child: Text(
-      title,
-      style: Theme.of(
-        context,
-      ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
     ),
   );
 }
