@@ -195,28 +195,28 @@ packages:
   minisound:
     dependency: "direct main"
     description:
-      path: "/mnt/work/_projects/_dart/minisound/minisound/"
+      path: "/home/daniil/Documents/minisound/minisound/"
       relative: false
     source: path
     version: "2.1.0"
   minisound_ffi:
     dependency: transitive
     description:
-      path: "../../../../../work/_projects/_dart/minisound/minisound_ffi"
+      path: "../../../minisound/minisound_ffi"
       relative: true
     source: path
     version: "2.1.0"
   minisound_platform_interface:
     dependency: transitive
     description:
-      path: "../../../../../work/_projects/_dart/minisound/minisound_platform_interface"
+      path: "../../../minisound/minisound_platform_interface"
       relative: true
     source: path
     version: "2.0.1"
   minisound_web:
     dependency: transitive
     description:
-      path: "../../../../../work/_projects/_dart/minisound/minisound_web"
+      path: "../../../minisound/minisound_web"
       relative: true
     source: path
     version: "2.1.0"

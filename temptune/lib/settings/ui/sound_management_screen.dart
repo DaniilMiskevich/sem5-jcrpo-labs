@@ -24,14 +24,14 @@ class _SoundManagementScreenState extends State<SoundManagementScreen> {
   Future<void> _saveSound(CustomMetronomeSoundMeta sound) async {
     await _soundUsecases.save(sound);
 
-    await _loadSounds().then((loadedSounds) => sounds = loadedSounds);
+    sounds = await _loadSounds();
     setState(() {});
   }
 
   Future<void> _deleteSound(CustomMetronomeSoundMeta sound) async {
     await _soundUsecases.delete(sound);
 
-    await _loadSounds().then((loadedSounds) => sounds = loadedSounds);
+    sounds = await _loadSounds();
     setState(() {});
   }
 
@@ -68,7 +68,7 @@ class _SoundManagementScreenState extends State<SoundManagementScreen> {
     super.initState();
 
     () async {
-      await _loadSounds().then((loadedSounds) => sounds = loadedSounds);
+      sounds = await _loadSounds();
 
       setState(() {});
     }();

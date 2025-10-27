@@ -4,6 +4,7 @@ import "package:file_picker/file_picker.dart";
 import "package:flutter/material.dart";
 import "package:temptune/_common/ui/widgets/space.dart";
 import "package:temptune/metronome/domain/entities/metronome_sound.dart";
+import "package:cross_file/cross_file.dart";
 
 class CustomSoundEditDialog extends StatefulWidget {
   const CustomSoundEditDialog({
@@ -24,17 +25,17 @@ class _CustomSoundEditDialogState extends State<CustomSoundEditDialog> {
     text: widget.sound?.name,
   );
 
-  PlatformFile? file;
+  XFile? file;
 
   bool get isEditing => widget.sound != null;
 
-  void _updateFile(PlatformFile val) => setState(() {
+  void _updateFile(XFile val) => setState(() {
     file = val;
   });
 
-  Future<PlatformFile?> _showFilePicker() => FilePicker.platform
+  Future<XFile?> _showFilePicker() => FilePicker.platform
       .pickFiles(type: FileType.audio)
-      .then((r) => r?.files.firstOrNull);
+      .then((r) => r?.xFiles.firstOrNull);
 
   @override
   void dispose() {
@@ -69,7 +70,7 @@ class _CustomSoundEditDialogState extends State<CustomSoundEditDialog> {
           padding: const EdgeInsets.all(8.0),
           child: Center(
             child: switch (file) {
-              PlatformFile(:final name) => ElevatedButton.icon(
+              XFile(:final name) => ElevatedButton.icon(
                 onPressed: () async {},
                 label: SizedBox(child: Text(name)),
                 icon: const Icon(Icons.audio_file_rounded),
@@ -94,7 +95,7 @@ class _CustomSoundEditDialogState extends State<CustomSoundEditDialog> {
       ),
       TextButton(
         onPressed: () async {
-          final data = file?.bytes ?? widget.sound?.data;
+          final data = await file?.readAsBytes() ?? widget.sound?.data;
           if (data == null) return;
 
           await widget.onSave(

@@ -13,37 +13,35 @@ final class SoundService {
 
   final MetronomeSoundUsecases metronomeSoundUsecases;
 
-  LoadedSound? _metronomeSound;
-
+  ({MetronomeSoundMeta meta, LoadedSound loadedSound})? _metronomeSound;
+  void startMetronome() => _metronomeSound?.loadedSound.resume();
+  void stopMetronome() => _metronomeSound?.loadedSound.pause();
   Future<void> updateMetronomeConfig(MetronomeConfig config) async {
     final sound =
         (config.soundId == null
             ? null
             : await metronomeSoundUsecases.load(config.soundId!)) ??
         await metronomeSoundUsecases.fallback;
+    if (_metronomeSound?.meta != sound) {
+      final loadedSound = await switch (sound) {
+        BuiltinMetronomeSoundMeta(:final assetPath) => _engine.loadSoundAsset(
+          assetPath,
+        ),
+        CustomMetronomeSoundMeta(:final data) => _engine.loadSound(data),
+      };
+      _metronomeSound?.loadedSound.stop();
+      _metronomeSound = (meta: sound, loadedSound: loadedSound);
+    }
 
-    final metronomeSound = await switch (sound) {
-      BuiltinMetronomeSoundMeta(:final assetPath) => _engine.loadSoundAsset(
-        assetPath,
-      ),
-      CustomMetronomeSoundMeta(:final data) => _engine.loadSound(data),
-    };
-    metronomeSound.playLooped(
+    // if (_metronomeSound?.loadedSound.isPlaying ?? false)
+    _metronomeSound?.loadedSound.playLooped(
       delay:
-          Duration(milliseconds: 60000 ~/ config.bpm) - metronomeSound.duration,
+          Duration(milliseconds: 60000 ~/ config.bpm) -
+          _metronomeSound!.loadedSound.duration,
     );
-    _metronomeSound?.stop();
-    _metronomeSound = metronomeSound;
   }
 
-  void startMetronome() {}
-
-  void stopMetronome() {
-    _metronomeSound?.stop();
-    _metronomeSound = null;
-  }
-
-  late final WaveformSound _tunerSound = _engine.genWaveform(WaveformType.sine);
+  late final _tunerSound = _engine.genWaveform(WaveformType.sine);
   void startTuner() => _tunerSound.play();
   void stopTuner() => _tunerSound.stop();
   void updateTunerConfig(TunerConfig config) {
