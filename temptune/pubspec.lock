@@ -136,14 +136,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.7"
   leak_tracker:
     dependency: transitive
     description:
@@ -203,35 +195,31 @@ packages:
   minisound:
     dependency: "direct main"
     description:
-      name: minisound
-      sha256: dbbd342cac3e94c6797e821ac48358438abbfffba6a5b6998681a21c68e2e846
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
+      path: "/mnt/work/_projects/_dart/minisound/minisound/"
+      relative: false
+    source: path
+    version: "2.1.0"
   minisound_ffi:
     dependency: transitive
     description:
-      name: minisound_ffi
-      sha256: "1623fb07a4c127389b9637d78bd304b62705cc60a7f6d08500dfe659d2c1bd42"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.6"
+      path: "../../../../../work/_projects/_dart/minisound/minisound_ffi"
+      relative: true
+    source: path
+    version: "2.1.0"
   minisound_platform_interface:
     dependency: transitive
     description:
-      name: minisound_platform_interface
-      sha256: b346450fd79ad58a0f179e47f4dcb7c155b815eb0cbf0014091c38443d840668
-      url: "https://pub.dev"
-    source: hosted
+      path: "../../../../../work/_projects/_dart/minisound/minisound_platform_interface"
+      relative: true
+    source: path
     version: "2.0.1"
   minisound_web:
     dependency: transitive
     description:
-      name: minisound_web
-      sha256: a68089e66f239626728ec4827664c1aee166a1622e85cfc3a21b427a55891f2b
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
+      path: "../../../../../work/_projects/_dart/minisound/minisound_web"
+      relative: true
+    source: path
+    version: "2.1.0"
   nested:
     dependency: transitive
     description:

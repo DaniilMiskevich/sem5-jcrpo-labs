@@ -43,19 +43,12 @@ final class SoundService {
     _metronomeSound = null;
   }
 
-  GeneratedSound? _tunerSound;
-
+  late final WaveformSound _tunerSound = _engine.genWaveform(WaveformType.sine);
+  void startTuner() => _tunerSound.play();
+  void stopTuner() => _tunerSound.stop();
   void updateTunerConfig(TunerConfig config) {
-    _tunerSound ??= _engine.genWaveform(config.waveType, freq: config.freq);
-    _tunerSound!.volume = config.volume;
-  }
-
-  void startTuner() {
-    _tunerSound?.play();
-  }
-
-  void stopTuner() {
-    _tunerSound?.stop();
-    _tunerSound = null;
+    _tunerSound.type = config.waveType;
+    _tunerSound.freq = config.freq;
+    _tunerSound.volume = config.volume;
   }
 }

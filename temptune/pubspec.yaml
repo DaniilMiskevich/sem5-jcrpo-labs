@@ -15,7 +15,8 @@ dependencies:
 
   provider: ^6.1.5+1
 
-  minisound: ^2.0.2
+  minisound: 
+    path: /mnt/work/_projects/_dart/minisound/minisound/
 
 dev_dependencies:
   flutter_test:
