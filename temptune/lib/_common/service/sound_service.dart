@@ -1,3 +1,5 @@
+import "dart:async";
+
 import "package:minisound/engine_flutter.dart";
 import "package:temptune/metronome/domain/entities/metronome_config.dart";
 import "package:temptune/metronome/domain/entities/metronome_sound.dart";
@@ -14,8 +16,13 @@ final class SoundService {
   final MetronomeSoundUsecases metronomeSoundUsecases;
 
   ({MetronomeSoundMeta meta, LoadedSound loadedSound})? _metronomeSound;
-  void startMetronome() => _metronomeSound?.loadedSound.resume();
-  void stopMetronome() => _metronomeSound?.loadedSound.pause();
+  ({bool isPlaying, Timer timer})? _metronome;
+  void startMetronome() => _metronome = _metronome == null
+      ? null
+      : (isPlaying: true, timer: _metronome!.timer);
+  void stopMetronome() => _metronome = _metronome == null
+      ? null
+      : (isPlaying: false, timer: _metronome!.timer);
   Future<void> updateMetronomeConfig(MetronomeConfig config) async {
     final sound =
         (config.soundId == null
@@ -29,19 +36,26 @@ final class SoundService {
         ),
         CustomMetronomeSoundMeta(:final data) => _engine.loadSound(data),
       };
-      loadedSound.volume = 0.5;
-      if (_metronomeSound?.loadedSound.isPlaying ?? false) {
-        loadedSound.play();
-        _metronomeSound?.loadedSound.stop();
-      }
       _metronomeSound = (meta: sound, loadedSound: loadedSound);
     }
 
-    // if (_metronomeSound?.loadedSound.isPlaying ?? false)
-    _metronomeSound?.loadedSound.playLooped(
-      delay:
-          Duration(milliseconds: 60000 ~/ config.bpm) -
-          _metronomeSound!.loadedSound.duration,
+    _metronome?.timer.cancel();
+    _metronome = (
+      isPlaying: _metronome?.isPlaying ?? false,
+      timer: Timer.periodic(Duration(microseconds: 60000000 ~/ config.bpm), (
+        t,
+      ) {
+        if (!(_metronome?.isPlaying ?? false)) return;
+
+        final sound = _metronomeSound?.loadedSound;
+        if (sound == null) return;
+
+        sound.volume =
+            config.accentBeat != 0 && (t.tick - 1) % config.accentBeat == 0
+            ? 1
+            : 0.5;
+        sound.play();
+      }),
     );
   }
 
