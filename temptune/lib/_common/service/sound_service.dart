@@ -29,7 +29,11 @@ final class SoundService {
         ),
         CustomMetronomeSoundMeta(:final data) => _engine.loadSound(data),
       };
-      _metronomeSound?.loadedSound.stop();
+      loadedSound.volume = 0.5;
+      if (_metronomeSound?.loadedSound.isPlaying ?? false) {
+        loadedSound.play();
+        _metronomeSound?.loadedSound.stop();
+      }
       _metronomeSound = (meta: sound, loadedSound: loadedSound);
     }
 

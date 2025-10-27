@@ -56,6 +56,13 @@ class _TunerScreenState extends State<TunerScreen> {
   }
 
   @override
+  void dispose() {
+    _soundService.stopTuner();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(title: const Text("Tuner")),
     floatingActionButton: FloatingActionButton(

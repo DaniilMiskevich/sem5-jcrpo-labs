@@ -115,6 +115,13 @@ class _MetronomeScreenState extends State<MetronomeScreen> {
   }
 
   @override
+  void dispose() {
+    _soundService.stopMetronome();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(title: const Text("Metronome")),
     floatingActionButton: FloatingActionButton(
