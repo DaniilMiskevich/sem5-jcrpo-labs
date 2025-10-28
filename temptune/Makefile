@@ -15,7 +15,7 @@ get:
 	flutter pub upgrade
 
 run: 
-	flutter run -v
+	flutter run
 
 clean:
 	flutter clean
