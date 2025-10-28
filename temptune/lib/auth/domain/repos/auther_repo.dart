@@ -1,6 +1,8 @@
 import "package:temptune/auth/domain/entities/user.dart";
 
 abstract interface class AutherRepo {
-  Future<User> signIn(String email, String password);
+  Stream<User?> userChanges();
+
+  Future<void> signIn(String email, String password);
   Future<void> signOut();
 }

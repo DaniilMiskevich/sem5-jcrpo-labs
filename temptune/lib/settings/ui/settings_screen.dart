@@ -16,7 +16,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   late final _authUsecases = context.read<AuthUsecases>();
 
-  User? user;
+  User? currentUser;
 
   Future<void> _showLoginDialog() async {
     final emailController = TextEditingController();
@@ -47,15 +47,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           TextButton(
             onPressed: () async {
-              final user = await _authUsecases.signIn(
+              await _authUsecases.signIn(
                 emailController.text,
                 passController.text,
               );
               if (!context.mounted) return;
-
-              setState(() {
-                this.user = user;
-              });
 
               Navigator.pop(context);
             },
@@ -82,7 +78,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             if (!context.mounted) return;
 
             setState(() {
-              user = null;
+              currentUser = null;
             });
 
             Navigator.pop(context);
@@ -97,7 +93,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     super.initState();
 
-    user = _authUsecases.user;
+    _authUsecases.userChanges.forEach(
+      (user) => setState(() {
+        currentUser = user;
+      }),
+    );
   }
 
   Widget _buildSectionHeader(String title) => Padding(
@@ -121,8 +121,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         Card(
           child: ListTile(
             leading: const Icon(Icons.person_rounded),
-            title: Text(user?.email ?? "Annonymous"),
-            onTap: user == null ? _showLoginDialog : _showLogoutDialog,
+            title: Text(currentUser?.email ?? "Annonymous"),
+            onTap: currentUser == null ? _showLoginDialog : _showLogoutDialog,
           ),
         ),
 

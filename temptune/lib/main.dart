@@ -2,6 +2,7 @@ import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:temptune/_common/data/repo_impls/bin_file_storage_repo_impl.dart";
+import "package:temptune/_common/data/repo_impls/firebase_storage_repo_impl.dart";
 import "package:temptune/_common/data/repo_impls/text_file_storage_repo_impl.dart";
 import "package:temptune/_common/domain/usecases/preset_usecases.dart";
 import "package:temptune/_common/service/sound_service.dart";
@@ -33,6 +34,10 @@ final customMetronomeSoundStorage = CustomMetronomeSoundFileStorageRepoImpl(
   BinFileStorageRepoImpl("userdata/metronome/sounds/data/"),
   TextFileStorageRepoImpl("userdata/metronome/sounds/meta/"),
 );
+// final firebaseStorage = TextFirebaseStorageRepoImpl(
+//   "presets",
+//   uuid: "helloworlder",
+// );
 
 final metronomePresetUsecases = PresetUsecases<MetronomeConfig>(
   metronomePresetStorage,
