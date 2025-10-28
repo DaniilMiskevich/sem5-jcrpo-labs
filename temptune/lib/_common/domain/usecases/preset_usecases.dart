@@ -4,7 +4,16 @@ import "package:temptune/_common/domain/repos/storage_repo.dart";
 final class PresetUsecases<T> {
   PresetUsecases(this._storage);
 
-  final StorageRepo<int, Preset<T>> _storage;
+  StorageRepo<int, Preset<T>> _storage;
+
+  Future<void> updateStorage(StorageRepo<int, Preset<T>> newStorage) async {
+    final ids = await list();
+    final oldPresets = await Future.wait(ids.map(load));
+
+    _storage = newStorage;
+
+    await Future.wait(oldPresets.whereType<Preset<T>>().map(save));
+  }
 
   Future<Preset<T>?> load(int id) => _storage.load(id);
 

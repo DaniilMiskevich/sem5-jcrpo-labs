@@ -1,5 +1,6 @@
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
+import "package:path_provider/path_provider.dart";
 import "package:provider/provider.dart";
 import "package:temptune/_common/data/repo_impls/bin_file_storage_repo_impl.dart";
 import "package:temptune/_common/data/repo_impls/firebase_storage_repo_impl.dart";
@@ -17,9 +18,12 @@ import "package:temptune/metronome/domain/entities/metronome_config.dart";
 import "package:temptune/metronome/domain/entities/metronome_sound.dart";
 import "package:temptune/metronome/domain/usecases/metronome_sound_usecases.dart";
 
-final metronomePresetStorage = MetronomePresetFileStorageRepoImpl(
-  TextFileStorageRepoImpl("userdata/metronome/presets/"),
-);
+late final MetronomePresetFileStorageRepoImpl metronomePresetStorage;
+MetronomePresetFileStorageRepoImpl createMetronomePresetSync(String uuid) =>
+    MetronomePresetFileStorageRepoImpl(
+      TextFirebaseStorageRepoImpl("presets", uuid: uuid),
+    );
+
 final builtinMetronomeSoundsStorage = BuiltinMetronomeSoundStorageRepoImpl([
   BuiltinMetronomeSoundMeta(
     name: "Click",
@@ -30,25 +34,13 @@ final builtinMetronomeSoundsStorage = BuiltinMetronomeSoundStorageRepoImpl([
     assetPath: "assets/metronome/sounds/8_bit.wav",
   ),
 ]);
-final customMetronomeSoundStorage = CustomMetronomeSoundFileStorageRepoImpl(
-  BinFileStorageRepoImpl("userdata/metronome/sounds/data/"),
-  TextFileStorageRepoImpl("userdata/metronome/sounds/meta/"),
-);
-// final firebaseStorage = TextFirebaseStorageRepoImpl(
-//   "presets",
-//   uuid: "helloworlder",
-// );
+late final CustomMetronomeSoundFileStorageRepoImpl customMetronomeSoundStorage;
 
-final metronomePresetUsecases = PresetUsecases<MetronomeConfig>(
-  metronomePresetStorage,
-);
-final metronomeSoundUsecases = MetronomeSoundUsecases(
-  builtinMetronomeSoundsStorage,
-  customMetronomeSoundStorage,
-);
-final authUsecases = AuthUsecases(FirebaseAutherRepoImpl());
+late final PresetUsecases<MetronomeConfig> metronomePresetUsecases;
+late final MetronomeSoundUsecases metronomeSoundUsecases;
+late final AuthUsecases authUsecases;
 
-final soundService = SoundService(metronomeSoundUsecases);
+late final SoundService soundService;
 
 void main() async {
   await soundService.init();
@@ -56,6 +48,32 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  final userdata = (await getApplicationDocumentsDirectory()).path;
+
+  metronomePresetStorage = MetronomePresetFileStorageRepoImpl(
+    TextFileStorageRepoImpl("$userdata/metronome/presets/"),
+  );
+  customMetronomeSoundStorage = CustomMetronomeSoundFileStorageRepoImpl(
+    BinFileStorageRepoImpl("$userdata/metronome/sounds/data/"),
+    TextFileStorageRepoImpl("$userdata/metronome/sounds/meta/"),
+  );
+
+  metronomePresetUsecases = PresetUsecases<MetronomeConfig>(
+    metronomePresetStorage,
+  );
+  metronomeSoundUsecases = MetronomeSoundUsecases(
+    builtinMetronomeSoundsStorage,
+    customMetronomeSoundStorage,
+  );
+  authUsecases = AuthUsecases(FirebaseAutherRepoImpl())
+    ..userChanges.forEach((u) async {
+      await metronomePresetUsecases.updateStorage(
+        u == null ? metronomePresetStorage : createMetronomePresetSync(u.uuid),
+      );
+    });
+
+  soundService = SoundService(metronomeSoundUsecases);
 
   runApp(const MyApp());
 }
@@ -81,13 +99,4 @@ class MyApp extends StatelessWidget {
       home: const MainScreen(),
     ),
   );
-}
-
-class AuthProvider extends StatelessWidget {
-  const AuthProvider({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
 }

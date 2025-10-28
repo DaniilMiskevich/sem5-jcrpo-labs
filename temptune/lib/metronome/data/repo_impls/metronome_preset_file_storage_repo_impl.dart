@@ -9,7 +9,7 @@ class MetronomePresetFileStorageRepoImpl
     implements StorageRepo<int, Preset<MetronomeConfig>> {
   MetronomePresetFileStorageRepoImpl(this._fileStorage);
 
-  final TextFileStorageRepoImpl _fileStorage;
+  final StorageRepo<String, String> _fileStorage;
 
   @override
   Future<Preset<MetronomeConfig>?> load(int id) async {
