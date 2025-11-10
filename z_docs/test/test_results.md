@@ -220,18 +220,12 @@
     - **Expected Result:** Tester could complete all tasks within 30 seconds without guidance.
     - **Actual Result:** As expected. Tester completed all tasks in 25 seconds without assistance.
 
-1. **USABILITY-02: UI Consistency**
-    - **Status:** Pass
-    - **Steps:** Verified all screens against provided mockups and Material Design 3 guidelines.
-    - **Expected Result:** UI matched mockups. Design was consistent, modern, and had large touch targets.
-    - **Actual Result:** As expected. UI implementation faithfully followed the design mockups and Material Design 3 specifications.
-
 
 ## 2 SUMMARY
 
 | Total Test Cases | Passed | Failed | Blocked | Pass Rate |
 |------------------|--------|--------|---------|-----------|
-| 24               | 24     | 0      | 0       | 100%      |
+| 23               | 23     | 0      | 0       | 100%      |
 
 
 ## 3 CRITICAL ISSUES FOUND
