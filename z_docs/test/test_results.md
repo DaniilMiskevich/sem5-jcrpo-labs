@@ -1,7 +1,9 @@
 # Test Results 
 
 **Project:** TempTune
+
 **Build Version:** 1.0.0
+
 **Device/OS:** Google Pixel 4A / Android 13
 
 
