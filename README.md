@@ -36,6 +36,13 @@ A combined metronome and tone generator flutter app for musical practice, featur
 - [Component and Deployment Diagram](./z_docs/component_and_deployment/component_and_deployment.md)
 
 
-<!-- ### Lab 5 -->
+### Lab 5
 
-<!-- - [Code](code/) -->
+- [Code](./temptune/)
+
+
+### Lab 6
+
+- [Test Plan](./z_docs/test/test_plan.md)
+
+- [Test Results](./z_docs/test/test_results.md)

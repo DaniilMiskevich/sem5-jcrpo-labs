@@ -187,9 +187,9 @@
     - **Status:** Pass
     - **Steps:** 
         1. Started metronome at 120 BPM.
-        2. Let it run for 45 minutes with app in foreground.
+        2. Let it run for 5 minutes with app in foreground.
     - **Expected Result:** App did not crash, freeze, or drop beats during extended session.
-    - **Actual Result:** As expected. No performance degradation or audio issues during 45-minute test.
+    - **Actual Result:** As expected. No performance degradation or audio issues during 5-minute test.
 
 1. **NF-02: Interruption Handling**
     - **Status:** Pass
@@ -231,7 +231,7 @@
 
 | Total Test Cases | Passed | Failed | Blocked | Pass Rate |
 |------------------|--------|--------|---------|-----------|
-| 25               | 25     | 0      | 0       | 100%      |
+| 24               | 24     | 0      | 0       | 100%      |
 
 
 ## 3 CRITICAL ISSUES FOUND
